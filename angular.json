@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "ges-cars-front": "apps/ges-cars-front",
+    "ges-cars-front-e2e": "apps/ges-cars-front-e2e"
+  }
+}

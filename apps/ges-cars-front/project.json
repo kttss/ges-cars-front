@@ -1,0 +1,104 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/ges-cars-front/src",
+  "prefix": "ges-cars-front",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ges-cars-front",
+        "index": "apps/ges-cars-front/src/index.html",
+        "main": "apps/ges-cars-front/src/main.ts",
+        "polyfills": "apps/ges-cars-front/src/polyfills.ts",
+        "tsConfig": "apps/ges-cars-front/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ges-cars-front/src/favicon.ico",
+          "apps/ges-cars-front/src/assets"
+        ],
+        "styles": ["apps/ges-cars-front/src/styles.scss",  
+          "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+          "apps/ges-cars-front/src/assets/scss/material-dashboard.scss"],
+        "scripts": [
+          "node_modules/jquery/dist/jquery.js",
+          "node_modules/popper.js/dist/umd/popper.js",
+          "node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js",
+          "node_modules/arrive/src/arrive.js",
+          "node_modules/moment/moment.js",
+          "node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js",
+          "node_modules/bootstrap-notify/bootstrap-notify.js",
+          "node_modules/chartist/dist/chartist.js"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ges-cars-front/src/environments/environment.ts",
+              "with": "apps/ges-cars-front/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "ges-cars-front:build:production"
+        },
+        "development": {
+          "browserTarget": "ges-cars-front:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ges-cars-front:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ges-cars-front/**/*.ts",
+          "apps/ges-cars-front/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ges-cars-front"],
+      "options": {
+        "jestConfig": "apps/ges-cars-front/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

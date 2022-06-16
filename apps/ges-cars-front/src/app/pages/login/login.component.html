@@ -1,0 +1,81 @@
+<div class="wrapper wrapper-full-page">
+    <div class="page-header login-page header-filter" filter-color="black"
+        style="background-image: url('./assets/img/login-image.png'); background-size: cover; background-position: top center;">
+        <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+                    <form class="form" [formGroup]="loginForm">
+                        <div class="card card-login card-hidden">
+                            <div class="card-header card-header-rose text-center">
+                                <h4 class="card-title">Ges Cars</h4>
+
+                            </div>
+                            <div class="card-body ">
+                                <p class="card-description text-center">Login page</p>
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="material-icons">email</i>
+                                            </span>
+                                        </div>
+                                        <input formControlName="email" type="email" class="form-control"
+                                            placeholder="Email...">
+                                    </div>
+                                    <div class="error__container"
+                                        *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.dirty && loginForm.get('email')?.invalid">
+                                        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                                            Email is <strong>required</strong>
+                                        </mat-error>
+                                        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                                            Please enter a valid email address
+                                        </mat-error>
+                                    </div>
+
+                                </span>
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="material-icons">lock_outline</i>
+                                            </span>
+                                        </div>
+                                        <input formControlName="password" type="password" class="form-control"
+                                            placeholder="Password...">
+                                    </div>
+                                    <div class="error__container"
+                                        *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.dirty">
+                                        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                                            password is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <div class="error__container">
+                                        <mat-error>
+                                            {{errorMessage}}
+                                        </mat-error>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-footer justify-content-center">
+                                <button (click)="onSubmit()" class="btn btn-rose btn-link btn-lg">se connecter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="footer ">
+            <div class="container">
+                <nav class="pull-left">
+
+                </nav>
+                <div class="copyright pull-right">
+                    &copy;
+                    {{test | date: 'yyyy'}}, made with <i class="material-icons">favorite</i> by
+                    <a href="https://www.creative-tim.com" target="_blank">kttss</a>.
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
