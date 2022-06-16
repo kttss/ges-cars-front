@@ -12,4 +12,8 @@ export class UserService {
   create(user: ICreateUserDto) {
     return this.network.post('user', user);
   }
+
+  getAll() {
+    return this.network.get('user');
+  }
 }

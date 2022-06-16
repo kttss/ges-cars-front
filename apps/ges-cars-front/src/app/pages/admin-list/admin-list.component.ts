@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { IDataSource } from '../../shared/models/table.model';
 
 @Component({
   selector: 'ges-cars-front-admin-list',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-list.component.scss'],
 })
 export class AdminListComponent implements OnInit {
-  data = {
+  data: IDataSource = {
     mode: {
       edit: false,
       delete: true,
@@ -14,32 +16,19 @@ export class AdminListComponent implements OnInit {
     },
     columns: [
       { key: 'id', title: '#' },
-      { key: 'name', title: 'name' },
-      { key: 'job', title: 'Job' },
-      { key: 'salary', title: 'Salary' },
+      { key: 'firstname', title: 'Nom' },
+      { key: 'lastname', title: 'Prénom' },
+      { key: 'role', title: 'Rôle' },
+      { key: 'email', title: 'E-mail' },
+      { key: 'telephone', title: 'Telephone' },
     ],
-    rows: [
-      {
-        id: 1,
-        name: 'Andrew Mike',
-        job: 'Design',
-        salary: '62773',
-      },
-      {
-        id: 2,
-        name: 'Andrew Mike',
-        job: 'Design',
-        salary: '62773',
-      },
-      {
-        id: 3,
-        name: 'Andrew Mike',
-        job: 'Design',
-        salary: '62773',
-      },
-    ],
+    rows: [],
   };
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getAll().subscribe((data: any) => {
+      this.data.rows = data;
+    });
+  }
 }
