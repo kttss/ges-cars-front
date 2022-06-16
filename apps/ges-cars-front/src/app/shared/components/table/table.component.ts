@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDataSource } from '../../models/table.model';
 
 @Component({
-  selector: 'ges-cars-front-table',
+  selector: 'ges-cars-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
