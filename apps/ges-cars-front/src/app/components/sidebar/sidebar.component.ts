@@ -107,7 +107,7 @@ export const ROUTES: RouteInfo[] = [
     type: 'sub',
     collapse: 'admin',
     children: [
-      { path: 'list', title: 'List', ab: 'L' },
+      { path: 'list', title: 'Liste des admins', ab: 'L' },
       { path: 'new', title: 'new ', ab: 'N' },
     ],
   },

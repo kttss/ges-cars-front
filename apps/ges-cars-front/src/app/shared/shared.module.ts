@@ -7,9 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TableComponent } from './components/table/table.component';
+import { ContainerComponent } from './components/container/container.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [TableComponent, ContainerComponent, CardComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -27,6 +29,8 @@ import { TableComponent } from './components/table/table.component';
     MatSelectModule,
     MatTooltipModule,
     TableComponent,
+    ContainerComponent,
+    CardComponent,
   ],
 })
 export class SharedModule {}

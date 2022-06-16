@@ -1,19 +1,5 @@
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-rose card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">assignment</i>
-                        </div>
-                        <h4 class="card-title">Simple Table</h4>
-                    </div>
-                    <div class="card-body">
-                        <ges-cars-table [dataSource]="data"></ges-cars-table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<ges-cars-container>
+    <ges-cars-card title="Liste des admins" icon="assignment">
+        <ges-cars-table [dataSource]="data"></ges-cars-table>
+    </ges-cars-card>
+</ges-cars-container>
