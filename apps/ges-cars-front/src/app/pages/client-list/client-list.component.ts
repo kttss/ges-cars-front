@@ -19,7 +19,7 @@ export interface TableData2 {
   dataRows: TableWithCheckboxes[];
 }
 @Component({
-  selector: 'ges-cars-front-client-list',
+  selector: 'ges-cars-client-list',
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.scss'],
 })

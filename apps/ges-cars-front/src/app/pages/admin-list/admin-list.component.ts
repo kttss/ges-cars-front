@@ -3,7 +3,7 @@ import { UserService } from '../../services/user.service';
 import { IDataSource } from '../../shared/models/table.model';
 
 @Component({
-  selector: 'ges-cars-front-admin-list',
+  selector: 'ges-cars-admin-list',
   templateUrl: './admin-list.component.html',
   styleUrls: ['./admin-list.component.scss'],
 })

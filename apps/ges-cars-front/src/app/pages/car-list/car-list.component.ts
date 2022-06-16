@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ges-cars-front-car-list',
+  selector: 'ges-cars-car-list',
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss'],
 })

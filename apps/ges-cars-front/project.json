@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/ges-cars-front/src",
-  "prefix": "ges-cars-front",
+  "prefix": "ges-cars",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -17,9 +17,11 @@
           "apps/ges-cars-front/src/favicon.ico",
           "apps/ges-cars-front/src/assets"
         ],
-        "styles": ["apps/ges-cars-front/src/styles.scss",  
+        "styles": [
+          "apps/ges-cars-front/src/styles.scss",
           "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
-          "apps/ges-cars-front/src/assets/scss/material-dashboard.scss"],
+          "apps/ges-cars-front/src/assets/scss/material-dashboard.scss"
+        ],
         "scripts": [
           "node_modules/jquery/dist/jquery.js",
           "node_modules/popper.js/dist/umd/popper.js",

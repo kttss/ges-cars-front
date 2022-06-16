@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "ges-cars-front",
+  "npmScope": "ges-cars",
   "affected": {
     "defaultBase": "master"
   },

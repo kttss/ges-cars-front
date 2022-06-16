@@ -6,7 +6,7 @@ import { LoginService } from '../../services/login.service';
 declare let $: any;
 
 @Component({
-  selector: 'ges-cars-front-login',
+  selector: 'ges-cars-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

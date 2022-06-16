@@ -7,7 +7,7 @@ import { UserService } from '../../services/user.service';
 import { RoleEnum } from '../../shared/enums/role.enum';
 
 @Component({
-  selector: 'ges-cars-front-admin-form',
+  selector: 'ges-cars-admin-form',
   templateUrl: './admin-form.component.html',
   styleUrls: ['./admin-form.component.scss'],
 })
