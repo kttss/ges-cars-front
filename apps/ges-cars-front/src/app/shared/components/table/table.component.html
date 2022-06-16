@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead *ngIf="dataSource &&  dataSource.columns">
+            <tr>
+                <th *ngFor="let col of dataSource.columns">{{ col.title }}</th>
+
+                <th class="text-right" *ngIf="dataSource.mode.detail || dataSource.mode.edit || dataSource.mode.delete">
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngIf="dataSource &&  dataSource.rows">
+            <tr *ngFor="let row of dataSource.rows">
+                <td *ngFor="let col of dataSource.columns">{{row[col.key]}}</td>
+
+
+                <td class="td-actions text-right"
+                    *ngIf="dataSource.mode.detail || dataSource.mode.edit || dataSource.mode.delete">
+                    <button mat-raised-button type="button" class="btn btn-info btn-link" *ngIf="dataSource.mode.detail"
+                        (click)="handleViewDetail(row)">
+                        <i class="material-icons">person</i>
+                    </button>
+                    <button mat-raised-button type="button" class="btn btn-success btn-link"
+                        *ngIf="dataSource.mode.edit" (click)="handleEdit(row)">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button mat-raised-button type="button" class="btn btn-danger btn-link"
+                        *ngIf="dataSource.mode.delete" (click)="handleDelete(row)">
+                        <i class="material-icons">close</i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

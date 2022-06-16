@@ -6,9 +6,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [TableComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -25,6 +26,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    TableComponent,
   ],
 })
 export class SharedModule {}
