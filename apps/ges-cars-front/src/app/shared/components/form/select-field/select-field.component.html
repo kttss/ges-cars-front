@@ -1,0 +1,7 @@
+<mat-form-field *ngIf="control">
+    <mat-select multiple [placeholder]="label" [formControl]="control">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+            {{ option.viewValue }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

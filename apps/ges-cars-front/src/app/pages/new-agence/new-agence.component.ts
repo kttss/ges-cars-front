@@ -15,8 +15,13 @@ export class NewAgenceComponent {
     telephones: new FormControl([], [Validators.required]),
     emails: new FormControl([], [Validators.required]),
     faxs: new FormControl([], [Validators.required]),
+    admins: new FormControl([], [Validators.required]),
     logo: new FormControl('logo'),
   });
+  users = [
+    { value: '0', viewValue: 'issam' },
+    { value: '1', viewValue: 'test' },
+  ];
 
   get form() {
     return this.agenceForm.controls;

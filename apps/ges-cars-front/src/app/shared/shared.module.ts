@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { TagFieldComponent } from './components/form/tag-field/tag-field.component';
 import { ImageFieldComponent } from './components/form/image-field/image-field.component';
+import { SelectFieldComponent } from './components/form/select-field/select-field.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ImageFieldComponent } from './components/form/image-field/image-field.c
     FieldTextComponent,
     TagFieldComponent,
     ImageFieldComponent,
+    SelectFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +55,7 @@ import { ImageFieldComponent } from './components/form/image-field/image-field.c
     TagInputModule,
     TagFieldComponent,
     ImageFieldComponent,
+    SelectFieldComponent,
   ],
 })
 export class SharedModule {}
