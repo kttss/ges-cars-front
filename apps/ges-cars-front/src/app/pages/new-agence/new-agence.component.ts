@@ -1,12 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ges-cars-new-agence',
   templateUrl: './new-agence.component.html',
   styleUrls: ['./new-agence.component.scss'],
 })
-export class NewAgenceComponent implements OnInit {
-  constructor() {}
+export class NewAgenceComponent {
+  agenceForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    adresse: new FormControl('', [Validators.required]),
+  });
 
-  ngOnInit(): void {}
+  get form() {
+    return this.agenceForm.controls;
+  }
 }

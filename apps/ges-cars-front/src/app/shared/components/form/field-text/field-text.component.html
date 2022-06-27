@@ -1,0 +1,8 @@
+<mat-form-field class="example-full-width" *ngIf="control">
+    <input matInput [placeholder]="label" type="email" [formControl]="control">
+</mat-form-field>
+<div class="error__container" *ngIf="control && control.touched && control.dirty && control.errors">
+    <mat-error>
+        {{getMessage()}}
+    </mat-error>
+</div>

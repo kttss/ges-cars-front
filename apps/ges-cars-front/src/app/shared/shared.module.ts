@@ -9,9 +9,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TableComponent } from './components/table/table.component';
 import { ContainerComponent } from './components/container/container.component';
 import { CardComponent } from './components/card/card.component';
+import { FieldTextComponent } from './components/form/field-text/field-text.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [TableComponent, ContainerComponent, CardComponent],
+  declarations: [
+    TableComponent,
+    ContainerComponent,
+    CardComponent,
+    FieldTextComponent,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -20,6 +27,9 @@ import { CardComponent } from './components/card/card.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    FormsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatButtonModule,
@@ -31,6 +41,9 @@ import { CardComponent } from './components/card/card.component';
     TableComponent,
     ContainerComponent,
     CardComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    FieldTextComponent,
   ],
 })
 export class SharedModule {}
