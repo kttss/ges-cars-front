@@ -13,6 +13,7 @@ import { FieldTextComponent } from './components/form/field-text/field-text.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { TagFieldComponent } from './components/form/tag-field/tag-field.component';
+import { ImageFieldComponent } from './components/form/image-field/image-field.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TagFieldComponent } from './components/form/tag-field/tag-field.compone
     CardComponent,
     FieldTextComponent,
     TagFieldComponent,
+    ImageFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { TagFieldComponent } from './components/form/tag-field/tag-field.compone
     FieldTextComponent,
     TagInputModule,
     TagFieldComponent,
+    ImageFieldComponent,
   ],
 })
 export class SharedModule {}

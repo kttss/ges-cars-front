@@ -11,7 +11,9 @@ export class NewAgenceComponent {
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     adresse: new FormControl('', [Validators.required]),
-    tags: new FormControl([], [Validators.required]),
+    telephones: new FormControl([], [Validators.required]),
+    emails: new FormControl([], [Validators.required]),
+    faxs: new FormControl([], [Validators.required]),
   });
 
   get form() {

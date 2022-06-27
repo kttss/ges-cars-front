@@ -9,3 +9,9 @@ tag-input {
   padding-left: 0;
   padding-top: 0;
 }
+
+::ng-deep {
+  ges-cars-tag-field {
+    margin-bottom: 10px;
+  }
+}
