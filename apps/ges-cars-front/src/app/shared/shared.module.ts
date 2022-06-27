@@ -11,6 +11,8 @@ import { ContainerComponent } from './components/container/container.component';
 import { CardComponent } from './components/card/card.component';
 import { FieldTextComponent } from './components/form/field-text/field-text.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TagInputModule } from 'ngx-chips';
+import { TagFieldComponent } from './components/form/tag-field/tag-field.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContainerComponent,
     CardComponent,
     FieldTextComponent,
+    TagFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     FormsModule,
     ReactiveFormsModule,
+    TagInputModule,
   ],
   exports: [
     MatButtonModule,
@@ -44,6 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     FieldTextComponent,
+    TagInputModule,
+    TagFieldComponent,
   ],
 })
 export class SharedModule {}
