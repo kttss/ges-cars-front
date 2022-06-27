@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AgenceService } from '../../services/agence.service';
+import { IDataSource } from '../../shared/models/table.model';
 
 @Component({
   selector: 'ges-cars-agence-list',
@@ -6,7 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agence-list.component.scss'],
 })
 export class AgenceListComponent implements OnInit {
-  constructor() {}
+  data: IDataSource = {
+    mode: {
+      edit: false,
+      delete: true,
+      detail: true,
+    },
+    columns: [
+      { key: 'id', title: '#' },
+      { key: 'name', title: 'Nom' },
+      { key: 'description', title: 'Description' },
+      { key: 'adresse', title: 'Adresse' },
+      { key: 'emails', title: 'Emails', width: 130 },
+      { key: 'telephones', title: 'Tels', width: 130 },
+      { key: 'telephones', title: 'Faxs', width: 130 },
+    ],
+    rows: [],
+  };
+  constructor(private agenceService: AgenceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.agenceService.getAll().subscribe((res: any) => {
+      const rows = res.map((e: any) => {
+        return {
+          adresse: e.adresse,
+          description: e.description,
+          emails: e.emails.map((t: any) => t.value).join(', \n'),
+          id: e.id,
+          logo: 'string',
+          name: e.name,
+          telephones: e.telephones.map((t: any) => t.value).join(', \n'),
+        };
+      });
+      this.data.rows = rows;
+    });
+  }
 }

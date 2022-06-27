@@ -14,4 +14,5 @@ declare interface IMode {
 declare interface IColumns {
   key: string;
   title: string;
+  width?: number;
 }
