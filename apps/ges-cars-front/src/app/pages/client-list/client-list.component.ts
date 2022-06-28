@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../../services/client.service';
+import { IDataSource } from '../../shared/models/table.model';
 
 declare let $: any;
 declare interface TableData {
@@ -34,7 +36,34 @@ export class ClientListComponent implements OnInit {
       ['5', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
     ],
   };
-  constructor() {}
 
-  ngOnInit(): void {}
+  data: IDataSource = {
+    mode: {
+      edit: false,
+      delete: true,
+      detail: true,
+    },
+    columns: [
+      { key: 'id', title: '#' },
+      { key: 'lastname', title: 'Nom' },
+      { key: 'firstname', title: 'Prenom' },
+      { key: 'birthday', title: 'Date naissance' },
+      { key: 'lieuNaissance', title: 'Lieu naissance' },
+      { key: 'adresse', title: 'Adresse' },
+      { key: 'telephone', title: 'Telephone' },
+      { key: 'cin', title: 'CIN' },
+      { key: 'villeCin', title: 'Ville cin' },
+      { key: 'datePermis', title: 'Date permis' },
+      { key: 'villePermis', title: 'Ville permis' },
+    ],
+    rows: [],
+  };
+
+  constructor(private clientService: ClientService) {}
+
+  ngOnInit(): void {
+    this.clientService.getAll().subscribe((res: any) => {
+      this.data.rows = res;
+    });
+  }
 }
