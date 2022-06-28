@@ -8,6 +8,10 @@ import { NetworkService } from './network.service';
 export class ClientService {
   constructor(private network: NetworkService) {}
 
+  create(client: any) {
+    return this.network.post('client', client);
+  }
+
   getAll() {
     return this.network.get('client');
   }
