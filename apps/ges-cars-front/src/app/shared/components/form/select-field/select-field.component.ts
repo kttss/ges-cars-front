@@ -9,4 +9,5 @@ export class SelectFieldComponent {
   @Input() options: any[] = [];
   @Input() control: any;
   @Input() label = '';
+  @Input() multiple = false;
 }
