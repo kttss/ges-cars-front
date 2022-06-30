@@ -1,16 +1,16 @@
-<legend>Regular Image</legend>
 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-    <div class="fileinput-new thumbnail">
-        <img src="https://demos.creative-tim.com/material-dashboard-pro-angular2/assets/img/placeholder.jpg" alt="...">
+    <div class="fileinput-new thumbnail fileinput-preview">
+        <img [src]="file ? file : avatar" alt="...">
+
     </div>
     <div class="fileinput-preview fileinput-exists thumbnail"></div>
-    <div>
+    <div class="fileinput-actions">
         <span class="btn btn-rose btn-round btn-file">
-            <span class="fileinput-new">Select image</span>
-            <span class="fileinput-exists">Change</span>
-            <input type="file" name="..." />
+            <span class="fileinput-new" *ngIf="!file">Select image</span>
+            <span class="fileinput-new" *ngIf="file">Change</span>
+            <input type="file" name="..." (change)="onchange($event)" />
         </span>
-        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
-                class="fa fa-times"></i> Remove</a>
+        <span class="btn btn-danger btn-round " *ngIf="file" (click)="onDelete()"><i class="fa fa-times"></i>
+            Remove</span>
     </div>
 </div>
