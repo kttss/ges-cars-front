@@ -2,16 +2,40 @@ legend {
   color: rgba(0, 0, 0, .54);
   font-size: 14px;
   margin: 0;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  line-height: 12px;
 }
 
 tag-input {
   padding-left: 0;
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 ::ng-deep {
   ges-cars-tag-field {
     margin-bottom: 10px;
+  }
+
+  .ng2-tag-input.filled-theme {
+    border-color: rgba(0, 0, 0, .42) !important;
+    border-width: 1px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ng2-tag-input.filled-theme tag {
+    margin: 2px 8px 2px 0 !important;
+  }
+
+  .ng2-tag-input__text-input {
+    height: 20px !important;
+  }
+
+  .ng2-tag-input {
+    min-height: 29px !important;
   }
 }

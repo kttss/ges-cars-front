@@ -1,29 +1,40 @@
 <ges-cars-container>
     <ges-cars-card title="nouvelle agecnce" icon="assignment" classes="col-md-10">
-        <form [formGroup]="agenceForm" class="row">
-            <div class="col-md-6">
-                <ges-cars-field-text label="Nom" class="col-md-6" [control]="form['name']"></ges-cars-field-text>
-                <ges-cars-field-text label="Description" class="col-md-6" [control]="form['description']"
-                    class="col-md-6"></ges-cars-field-text>
-                <ges-cars-field-text label="Adresse" class="col-md-6" [control]="form['adresse']" class="col-md-6">
-                </ges-cars-field-text>
+        <form [formGroup]="agenceForm">
+            <div class="row pb-4">
+                <div class="col-md-8">
+                    <ges-cars-field-text label="Nom" [control]="form['name']"></ges-cars-field-text>
+                    <ges-cars-field-text label="Description" [control]="form['description']" class="col-md-6">
+                    </ges-cars-field-text>
+                    <ges-cars-field-text label="Adresse" [control]="form['adresse']">
+                    </ges-cars-field-text>
+                </div>
+                <div class="col-md-4  text-right">
+                    <ges-cars-image-field [control]="form['logo']"></ges-cars-image-field>
+                </div>
             </div>
-
-            <ges-cars-image-field [control]="form['logo']" class="col-md-6 col-sm-12 text-right"></ges-cars-image-field>
-
-
-            <ges-cars-tag-field [control]="form['emails']" label="E-mail" placeholder="email"
-                secondaryPlaceholder="example: test@mail.com" class="col-sm-12 col-lg-6">
-            </ges-cars-tag-field>
-            <ges-cars-tag-field [control]="form['telephones']" label="Telephone" placeholder="tel"
-                secondaryPlaceholder="example: 0656783467" class="col-sm-12 col-lg-6">
-            </ges-cars-tag-field>
-            <ges-cars-tag-field [control]="form['faxs']" label="Fax" placeholder="fax"
-                secondaryPlaceholder="example: 0556783467" class="col-sm-12 col-lg-6">
-            </ges-cars-tag-field>
-            <ges-cars-select-field [options]="users" [control]="form['users']" label="admins"
-                class="col-sm-12 col-lg-6"></ges-cars-select-field>
-
+            <div class="row pb-4">
+                <div class="col-sm-12 col-lg-6">
+                    <ges-cars-tag-field [control]="form['emails']" label="E-mail" placeholder="email"
+                        secondaryPlaceholder="example: test@mail.com">
+                    </ges-cars-tag-field>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <ges-cars-tag-field [control]="form['telephones']" label="Telephone" placeholder="tel"
+                        secondaryPlaceholder="example: 0656783467">
+                    </ges-cars-tag-field>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <div class="col-sm-12 col-lg-6">
+                    <ges-cars-tag-field [control]="form['faxs']" label="Fax" placeholder="fax"
+                        secondaryPlaceholder="example: 0556783467" class="col-sm-12 col-lg-6"></ges-cars-tag-field>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <ges-cars-select-field [options]="users" [control]="form['users']" label="admins"
+                        class="col-sm-12 col-lg-6"></ges-cars-select-field>
+                </div>
+            </div>
 
         </form>
         <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()">Ajouter</button>
