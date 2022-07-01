@@ -10,7 +10,9 @@ export class FileService {
   constructor(private network: NetworkService) {}
 
   upload(file: FormData) {
-    return this.network.post('upload/upload', file, { responseType: 'text' });
+    return this.network
+      .post('upload/upload', file, { responseType: 'text' })
+      .toPromise();
   }
 
   getFileBlob(fileName: string) {

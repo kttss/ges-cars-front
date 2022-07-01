@@ -1,16 +1,23 @@
-<div class="fileinput fileinput-new text-center" data-provides="fileinput">
-    <div class="fileinput-new thumbnail fileinput-preview">
-        <img [src]="file ? file : avatar" alt="...">
+<ng-container *ngIf="control">
+    <ges-cars-image [avatar]="avatar" [file]="files" (changeImg)="onchange($event)" *ngIf="!isMultiple">
+    </ges-cars-image>
+
+    <div class="file-container" *ngIf="isMultiple">
+        <ges-cars-image *ngIf="!files.length" [avatar]="avatar" (changeImg)="addImage($event)"></ges-cars-image>
+
+        <ng-container *ngIf="files.length">
+            <ges-cars-image *ngFor="let img of files;let i = index" [file]="img" [avatar]="avatar"
+                (changeImg)="editImageByIndex($event,i)" [showRemove]="i>0" (remove)="onRemove(i)">
+            </ges-cars-image>
+
+            <div class="fileinput-plus" (click)="addImage('')">
+                <span class="material-icons">
+                    add_photo_alternate
+                </span>
+            </div>
+
+        </ng-container>
 
     </div>
-    <div class="fileinput-preview fileinput-exists thumbnail"></div>
-    <div class="fileinput-actions">
-        <span class="btn btn-rose btn-round btn-file">
-            <span class="fileinput-new" *ngIf="!file">Select image</span>
-            <span class="fileinput-new" *ngIf="file">Change</span>
-            <input type="file" name="..." (change)="onchange($event)" />
-        </span>
-        <span class="btn btn-danger btn-round " *ngIf="file" (click)="onDelete()"><i class="fa fa-times"></i>
-            Remove</span>
-    </div>
-</div>
+
+</ng-container>

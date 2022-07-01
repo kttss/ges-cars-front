@@ -19,7 +19,7 @@ export class NewAgenceComponent implements OnInit {
     emails: new FormControl([], [Validators.required]),
     faxs: new FormControl([], [Validators.required]),
     users: new FormControl([], [Validators.required]),
-    logo: new FormControl('logo'),
+    logo: new FormControl(''),
   });
   users = [];
 

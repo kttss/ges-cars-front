@@ -1,0 +1,50 @@
+.fileinput {
+  position: relative;
+  margin: 0;
+
+  .fileinput-new {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+  }
+
+  .close-icon {
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    color: #d15f5f;
+    cursor: pointer;
+    font-size: 29px;
+    display: none;
+    transition: all .5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &:hover {
+    .close-icon {
+      display: block;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fileinput-actions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    justify-content: center;
+  }
+}
