@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
@@ -16,7 +16,7 @@ import {
   templateUrl: './admin-form.component.html',
   styleUrls: ['./admin-form.component.scss'],
 })
-export class AdminFormComponent {
+export class AdminFormComponent implements OnInit {
   userForm = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
@@ -37,13 +37,29 @@ export class AdminFormComponent {
   get form() {
     return this.userForm.controls;
   }
+  admin: any = null;
   mode: 'edit' | 'detail' | 'new' = 'new';
+
+  changePassword = false;
 
   constructor(
     private userService: UserService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.route.url.subscribe((url) => {
+      if (url.length === 2) {
+        const id = Number(url[1].path);
+        const root = url[0].path;
+        this.mode = root as any;
+        this.loadAdminById(id);
+        this.toggleEditPassword(false);
+      }
+    });
+  }
 
   onSubmit() {
     if (this.userForm.invalid) {
@@ -58,6 +74,38 @@ export class AdminFormComponent {
     }
   }
 
+  private loadAdminById(id: number) {
+    this.userService.getById(id).subscribe((res) => {
+      this.admin = res;
+
+      this.userForm.patchValue({
+        firstname: this.admin.firstname,
+        lastname: this.admin.lastname,
+        email: this.admin.email,
+        role: this.admin.role,
+        telephone: this.admin.telephone,
+      });
+      if (this.mode === 'detail') {
+        this.userForm.disable();
+      }
+    });
+  }
+
+  toggleEditPassword(value: boolean) {
+    this.changePassword = value;
+    if (!this.changePassword) {
+      this.userForm.get('password')?.clearValidators();
+      this.userForm.get('confirmPassword')?.clearValidators();
+      this.userForm.get('password')?.setValue('');
+      this.userForm.get('confirmPassword')?.setValue('');
+    } else {
+      this.userForm.get('password')?.addValidators([Validators.required]);
+      this.userForm
+        .get('confirmPassword')
+        ?.addValidators([Validators.required, confirmPasswordValidator]);
+    }
+  }
+
   handleAdd() {
     this.userService.create(this.userForm.value).subscribe((data) => {
       this.alert.success('le compte bien ajouté');
@@ -66,9 +114,21 @@ export class AdminFormComponent {
   }
 
   handleUpdate() {
-    this.userService.create(this.userForm.value).subscribe((data) => {
-      this.alert.success('le compte bien modifié');
-      this.router.navigate(['/admin/list']);
-    });
+    this.userService
+      .update(this.admin.id, this.userForm.value)
+      .subscribe((data) => {
+        this.alert.success('le compte bien modifié');
+        this.router.navigate(['/admin/list']);
+      });
+  }
+
+  get getTitle() {
+    if (this.mode === 'new') {
+      return 'Ajouter Admin';
+    } else if (this.mode === 'detail') {
+      return 'Details';
+    } else {
+      return 'Edit Admin';
+    }
   }
 }

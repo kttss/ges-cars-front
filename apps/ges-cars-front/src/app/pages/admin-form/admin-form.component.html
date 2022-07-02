@@ -1,5 +1,5 @@
 <ges-cars-container>
-    <ges-cars-card title="Ajouter Utilisateur" icon="person" classes="col-md-8">
+    <ges-cars-card [title]="getTitle" icon="person" classes="col-md-8">
         <form [formGroup]="userForm">
             <div class="row">
                 <div class="col-md-6">
@@ -19,12 +19,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ges-cars-select-field [options]="roles" [control]="form['role']" label="Rôle" [multiple]="true">
+                    <ges-cars-select-field [options]="roles" [control]="form['role']" label="Rôle" [multiple]="false">
                     </ges-cars-select-field>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="changePassword || mode ==='new'">
                 <div class="col-md-6">
                     <ges-cars-field-text label="Mot de passe" [control]="form['password']" type="password">
                     </ges-cars-field-text>
@@ -36,8 +36,24 @@
                 </div>
             </div>
 
-            <button mat-raised-button type="submit" class="btn btn-info pull-right"
-                (click)="onSubmit()">Ajouter</button>
+            <div class="row" *ngIf="mode==='edit'">
+                <div class="col-md-12">
+                    <button mat-raised-button class="btn btn-link btn-password" type="button"
+                        (click)="toggleEditPassword(!changePassword)">
+                        <ng-container *ngIf="!changePassword">
+                            <i class="fa fa-expeditedssl"></i> modifier le mot de passe
+                        </ng-container>
+                        <ng-container *ngIf="changePassword">
+                            <i class="fa fa-close"></i> garder l'ancien mot de passe
+                        </ng-container>
+                    </button>
+                </div>
+            </div>
+
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                *ngIf="mode==='new'">Ajouter</button>
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                *ngIf="mode==='edit'">Modifier</button>
             <!-- <div class="clearfix"></div> -->
         </form>
     </ges-cars-card>

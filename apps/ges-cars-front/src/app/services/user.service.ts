@@ -13,7 +13,15 @@ export class UserService {
     return this.network.post('user', user);
   }
 
+  update(id: number, user: ICreateUserDto) {
+    return this.network.patch('user/' + id, user);
+  }
+
   getAll() {
     return this.network.get('user');
+  }
+
+  getById(id: number) {
+    return this.network.get('user/' + id);
   }
 }

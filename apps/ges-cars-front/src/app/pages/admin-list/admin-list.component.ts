@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { UserService } from '../../services/user.service';
 import { IDataSource } from '../../shared/models/table.model';
 
@@ -10,7 +12,7 @@ import { IDataSource } from '../../shared/models/table.model';
 export class AdminListComponent implements OnInit {
   data: IDataSource = {
     mode: {
-      edit: false,
+      edit: true,
       delete: true,
       detail: true,
     },
@@ -24,11 +26,19 @@ export class AdminListComponent implements OnInit {
     ],
     rows: [],
   };
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.userService.getAll().subscribe((data: any) => {
       this.data.rows = data;
     });
+  }
+
+  openDetail(admin: any) {
+    this.router.navigate(['/admin/detail/' + admin.id]);
+  }
+
+  openEdit(admin: any) {
+    this.router.navigate(['/admin/edit/' + admin.id]);
   }
 }

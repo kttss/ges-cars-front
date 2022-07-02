@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { AgenceService } from '../../services/agence.service';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
