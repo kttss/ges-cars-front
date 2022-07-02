@@ -1,6 +1,7 @@
 <ng-container *ngIf="control">
     <legend>{{label}}</legend>
     <tag-input [(ngModel)]='data' theme='filled-theme' [ngModelOptions]="{standalone: true}" (onAdd)="onAddTag($event)"
-        (onRemove)="onRemoveTag($event)" [placeholder]="placeholder" [secondaryPlaceholder]="secondaryPlaceholder">
+        (onRemove)="onRemoveTag($event)" [placeholder]="placeholder" [secondaryPlaceholder]="secondaryPlaceholder"
+        [disable]="control.disabled">
     </tag-input>
 </ng-container>

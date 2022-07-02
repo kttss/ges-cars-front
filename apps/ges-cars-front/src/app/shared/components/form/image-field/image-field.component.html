@@ -1,13 +1,16 @@
 <ng-container *ngIf="control">
-    <ges-cars-image [avatar]="avatar" [file]="files" (changeImg)="onchange($event)" *ngIf="!isMultiple">
+    <ges-cars-image [avatar]="avatar" [file]="files" (changeImg)="onchange($event)" *ngIf="!isMultiple"
+        [viewMode]="control.disabled">
     </ges-cars-image>
 
     <div class="file-container" *ngIf="isMultiple">
-        <ges-cars-image *ngIf="!files.length" [avatar]="avatar" (changeImg)="addImage($event)"></ges-cars-image>
+        <ges-cars-image *ngIf="!files.length" [avatar]="avatar" (changeImg)="addImage($event)"
+            [viewMode]="control.disabled"></ges-cars-image>
 
         <ng-container *ngIf="files.length">
             <ges-cars-image *ngFor="let img of files;let i = index" [file]="img" [avatar]="avatar"
-                (changeImg)="editImageByIndex($event,i)" [showRemove]="i>0" (remove)="onRemove(i)">
+                (changeImg)="editImageByIndex($event,i)" [showRemove]="i>0" (remove)="onRemove(i)"
+                [viewMode]="control.disabled">
             </ges-cars-image>
 
             <div class="fileinput-plus" (click)="addImage('')">

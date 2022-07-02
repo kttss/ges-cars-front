@@ -1,5 +1,5 @@
 <ges-cars-container>
-    <ges-cars-card title="nouvelle agecnce" icon="assignment" classes="col-md-10">
+    <ges-cars-card [title]="getTitle" icon="account_balance" classes="col-md-10">
         <form [formGroup]="agenceForm">
             <div class="row pb-4">
                 <div class="col-md-8">
@@ -28,15 +28,18 @@
             <div class="row pb-4">
                 <div class="col-sm-12 col-lg-6">
                     <ges-cars-tag-field [control]="form['faxs']" label="Fax" placeholder="fax"
-                        secondaryPlaceholder="example: 0556783467" class="col-sm-12 col-lg-6"></ges-cars-tag-field>
+                        secondaryPlaceholder="example: 0556783467"></ges-cars-tag-field>
                 </div>
                 <div class="col-sm-12 col-lg-6">
-                    <ges-cars-select-field [options]="users" [control]="form['users']" label="admins"
-                        class="col-sm-12 col-lg-6"></ges-cars-select-field>
+                    <ges-cars-select-field [options]="users" [control]="form['users']" label="admins" [multiple]="true">
+                    </ges-cars-select-field>
                 </div>
             </div>
 
         </form>
-        <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()">Ajouter</button>
+        <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+            *ngIf="mode==='new'">Ajouter</button>
+        <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+            *ngIf="mode==='edit'">Modeifier</button>
     </ges-cars-card>
 </ges-cars-container>

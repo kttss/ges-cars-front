@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { NetworkService } from './network.service';
 
 @Injectable({
@@ -13,5 +14,13 @@ export class AgenceService {
 
   getAll() {
     return this.network.get('agency');
+  }
+
+  getById(id: number) {
+    return this.network.get('agency/' + id);
+  }
+
+  update(id: string, agence: any) {
+    return this.network.patch('agency/' + id, agence);
   }
 }

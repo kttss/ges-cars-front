@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AgenceService } from '../../services/agence.service';
 import { IDataSource } from '../../shared/models/table.model';
 
@@ -10,7 +12,7 @@ import { IDataSource } from '../../shared/models/table.model';
 export class AgenceListComponent implements OnInit {
   data: IDataSource = {
     mode: {
-      edit: false,
+      edit: true,
       delete: true,
       detail: true,
     },
@@ -25,7 +27,7 @@ export class AgenceListComponent implements OnInit {
     ],
     rows: [],
   };
-  constructor(private agenceService: AgenceService) {}
+  constructor(private agenceService: AgenceService, private router: Router) {}
 
   ngOnInit(): void {
     this.agenceService.getAll().subscribe((res: any) => {
@@ -42,5 +44,13 @@ export class AgenceListComponent implements OnInit {
       });
       this.data.rows = rows;
     });
+  }
+
+  openDetail(agnce: any) {
+    this.router.navigate(['/agence/detail/' + agnce.id]);
+  }
+
+  openEdit(agnce: any) {
+    this.router.navigate(['/agence/edit/' + agnce.id]);
   }
 }

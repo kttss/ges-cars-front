@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -14,5 +15,9 @@ export class NetworkService {
 
   post(url: string, body: any, headers?: any) {
     return this.http.post(environment.apiUrl + url, body, headers);
+  }
+
+  patch(url: string, body: any) {
+    return this.http.patch(environment.apiUrl + url, body);
   }
 }

@@ -5,7 +5,7 @@
     <div class="fileinput-new thumbnail fileinput-preview">
         <img [src]="file ? file : avatar" alt="...">
     </div>
-    <div class="fileinput-actions">
+    <div class="fileinput-actions" *ngIf="!viewMode">
         <span class="btn btn-rose btn-round btn-file">
             <span class="fileinput-new" *ngIf="!file">Select image</span>
             <span class="fileinput-new" *ngIf="file">Change</span>

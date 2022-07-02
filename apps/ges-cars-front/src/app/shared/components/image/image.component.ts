@@ -11,6 +11,7 @@ export class ImageComponent {
   @Input() avatar = '';
   @Input() file = '';
   @Input() showRemove = false;
+  @Input() viewMode = false;
   @Output() changeImg = new EventEmitter();
   @Output() remove = new EventEmitter();
 

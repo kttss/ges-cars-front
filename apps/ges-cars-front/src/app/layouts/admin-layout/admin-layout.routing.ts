@@ -92,6 +92,18 @@ export const AdminLayoutRoutes: Routes = [
         path: 'new',
         component: NewAgenceComponent,
       },
+      {
+        path: 'new',
+        component: NewAgenceComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: NewAgenceComponent,
+      },
+      {
+        path: 'detail/:id',
+        component: NewAgenceComponent,
+      },
     ],
   },
   {
