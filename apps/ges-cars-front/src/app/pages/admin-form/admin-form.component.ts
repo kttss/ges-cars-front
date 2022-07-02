@@ -25,6 +25,12 @@ export class AdminFormComponent {
     { value: RoleEnum.Admin, viewValue: 'Admin' },
     { value: RoleEnum.AgenceAdmin, viewValue: 'Agence admin' },
   ];
+
+  get form() {
+    return this.userForm.controls;
+  }
+  mode: 'edit' | 'detail' | 'new' = 'new';
+
   constructor(
     private userService: UserService,
     private alert: AlertService,
@@ -32,11 +38,29 @@ export class AdminFormComponent {
   ) {}
 
   onSubmit() {
-    if (this.userForm.valid) {
-      this.userService.create(this.userForm.value).subscribe((data) => {
-        this.alert.success('le compte bien ajouter');
-        this.router.navigate(['/admin/list']);
-      });
+    if (this.userForm.invalid) {
+      this.userForm.markAllAsTouched();
+      this.userForm.markAsDirty();
+    } else {
+      if (this.mode === 'new') {
+        this.handleAdd();
+      } else if (this.mode === 'edit') {
+        this.handleUpdate();
+      }
     }
+  }
+
+  handleAdd() {
+    this.userService.create(this.userForm.value).subscribe((data) => {
+      this.alert.success('le compte bien ajouté');
+      this.router.navigate(['/admin/list']);
+    });
+  }
+
+  handleUpdate() {
+    this.userService.create(this.userForm.value).subscribe((data) => {
+      this.alert.success('le compte bien modifié');
+      this.router.navigate(['/admin/list']);
+    });
   }
 }
