@@ -5,6 +5,11 @@ import { Router } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
 import { RoleEnum } from '../../shared/enums/role.enum';
+import {
+  confirmPasswordValidator,
+  emailValidator,
+  phoneValidator,
+} from '../../shared/utils/validators';
 
 @Component({
   selector: 'ges-cars-admin-form',
@@ -16,9 +21,12 @@ export class AdminFormComponent {
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    telephone: new FormControl('', [Validators.required]),
+    confirmPassword: new FormControl('', [
+      Validators.required,
+      confirmPasswordValidator,
+    ]),
+    email: new FormControl('', [Validators.required, emailValidator]),
+    telephone: new FormControl('', [Validators.required, phoneValidator]),
     role: new FormControl('', [Validators.required]),
   });
   roles = [
