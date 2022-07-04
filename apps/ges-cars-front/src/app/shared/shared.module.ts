@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { TableComponent } from './components/table/table.component';
 import { ContainerComponent } from './components/container/container.component';
 import { CardComponent } from './components/card/card.component';
@@ -16,6 +18,7 @@ import { TagFieldComponent } from './components/form/tag-field/tag-field.compone
 import { ImageFieldComponent } from './components/form/image-field/image-field.component';
 import { SelectFieldComponent } from './components/form/select-field/select-field.component';
 import { ImageComponent } from './components/image/image.component';
+import { DatepickerFieldComponent } from './components/form/datepicker-field/datepicker-field.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { ImageComponent } from './components/image/image.component';
     ImageFieldComponent,
     SelectFieldComponent,
     ImageComponent,
+    DatepickerFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +44,8 @@ import { ImageComponent } from './components/image/image.component';
     FormsModule,
     ReactiveFormsModule,
     TagInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
   ],
   exports: [
     MatButtonModule,
@@ -59,6 +65,9 @@ import { ImageComponent } from './components/image/image.component';
     ImageFieldComponent,
     SelectFieldComponent,
     ImageComponent,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    DatepickerFieldComponent,
   ],
 })
 export class SharedModule {}

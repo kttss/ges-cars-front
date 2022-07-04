@@ -15,4 +15,12 @@ export class ClientService {
   getAll() {
     return this.network.get('client');
   }
+
+  getById(id: number) {
+    return this.network.get('client/' + id);
+  }
+
+  update(id: number, client: any) {
+    return this.network.patch('client/' + id, client);
+  }
 }

@@ -130,6 +130,14 @@ export const AdminLayoutRoutes: Routes = [
         path: 'new',
         component: ClientFormComponent,
       },
+      {
+        path: 'edit/:id',
+        component: ClientFormComponent,
+      },
+      {
+        path: 'detail/:id',
+        component: ClientFormComponent,
+      },
     ],
   },
   {

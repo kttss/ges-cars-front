@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { IDataSource } from '../../shared/models/table.model';
 
@@ -39,7 +40,7 @@ export class ClientListComponent implements OnInit {
 
   data: IDataSource = {
     mode: {
-      edit: false,
+      edit: true,
       delete: true,
       detail: true,
     },
@@ -59,11 +60,19 @@ export class ClientListComponent implements OnInit {
     rows: [],
   };
 
-  constructor(private clientService: ClientService) {}
+  constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit(): void {
     this.clientService.getAll().subscribe((res: any) => {
       this.data.rows = res;
     });
+  }
+
+  openDetail(client: any) {
+    this.router.navigate(['/client/detail/' + client.id]);
+  }
+
+  openEdit(client: any) {
+    this.router.navigate(['/client/edit/' + client.id]);
   }
 }

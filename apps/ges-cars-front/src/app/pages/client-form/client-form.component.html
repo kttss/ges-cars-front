@@ -1,5 +1,5 @@
 <ges-cars-container>
-    <ges-cars-card title="Ajouter Client" icon="person" classes="col-md-8">
+    <ges-cars-card [title]="getTitle" icon="person" classes="col-md-8">
         <form [formGroup]="clientForm">
             <div class="row">
                 <div class="col-md-6">
@@ -20,7 +20,8 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <ges-cars-field-text label="date Naissance" [control]="form['birthday']"></ges-cars-field-text>
+                    <ges-cars-datepicker-field label="Date Naissance" [control]="form['birthday']">
+                    </ges-cars-datepicker-field>
                 </div>
                 <div class="col-md-6">
                     <ges-cars-field-text label="Lieu Naissance" [control]="form['lieuNaissance']"></ges-cars-field-text>
@@ -39,11 +40,15 @@
                     <ges-cars-field-text label="Ville Permis" [control]="form['villePermis']"></ges-cars-field-text>
                 </div>
                 <div class="col-md-6">
-                    <ges-cars-field-text label="Date Permis" [control]="form['datePermis']"></ges-cars-field-text>
+                    <ges-cars-datepicker-field label="Date Permis" [control]="form['datePermis']">
+                    </ges-cars-datepicker-field>
                 </div>
             </div>
-            <button mat-raised-button type="submit" class="btn btn-info pull-right"
-                (click)="onSubmit()">Ajouter</button>
+
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                *ngIf="mode==='new'">Ajouter</button>
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                *ngIf="mode==='edit'">Modifier</button>
         </form>
     </ges-cars-card>
 </ges-cars-container>
