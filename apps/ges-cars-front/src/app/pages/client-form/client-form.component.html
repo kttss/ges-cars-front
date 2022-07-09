@@ -1,5 +1,5 @@
 <ges-cars-container>
-    <ges-cars-card [title]="getTitle" icon="person" classes="col-md-8">
+    <ges-cars-card [title]="getTitle" icon="person" classes="col-md-10">
         <form [formGroup]="clientForm">
             <div class="row">
                 <div class="col-md-6">
@@ -32,16 +32,29 @@
                     <ges-cars-field-text label="CIN" [control]="form['cin']"></ges-cars-field-text>
                 </div>
                 <div class="col-md-6">
-                    <ges-cars-field-text label="Ville CIN" [control]="form['villeCin']"></ges-cars-field-text>
+                    <ges-cars-datepicker-field label="Date Permis" [control]="form['datePermis']">
+                    </ges-cars-datepicker-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <ges-cars-field-text label="Ville Permis" [control]="form['villePermis']"></ges-cars-field-text>
+
+                    <ges-cars-field-text label="Ville CIN" [control]="form['villeCin']"></ges-cars-field-text>
                 </div>
                 <div class="col-md-6">
-                    <ges-cars-datepicker-field label="Date Permis" [control]="form['datePermis']">
-                    </ges-cars-datepicker-field>
+
+                    <ges-cars-field-text label="Ville Permis" [control]="form['villePermis']"></ges-cars-field-text>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="label-client">CIN photos</div>
+                    <ges-cars-image-field [control]="form['cinImages']"></ges-cars-image-field>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="label-client">Permis photos</div>
+                    <ges-cars-image-field [control]="form['permisImages']"></ges-cars-image-field>
                 </div>
             </div>
 

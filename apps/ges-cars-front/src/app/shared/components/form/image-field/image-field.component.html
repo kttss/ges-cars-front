@@ -13,7 +13,7 @@
                 [viewMode]="control.disabled">
             </ges-cars-image>
 
-            <div class="fileinput-plus" (click)="addImage('')">
+            <div *ngIf="!control.disabled" class="fileinput-plus" (click)="addImage('')">
                 <span class="material-icons">
                     add_photo_alternate
                 </span>

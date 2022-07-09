@@ -23,4 +23,8 @@ export class ClientService {
   update(id: number, client: any) {
     return this.network.patch('client/' + id, client);
   }
+
+  getDocById(id: number) {
+    return this.network.get('client/doc/' + id);
+  }
 }

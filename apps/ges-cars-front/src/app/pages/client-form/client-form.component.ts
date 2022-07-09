@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 import { AlertService } from '../../services/alert.service';
 import { ClientService } from '../../services/client.service';
@@ -22,6 +23,8 @@ export class ClientFormComponent implements OnInit {
     villeCin: new FormControl('', [Validators.required]),
     villePermis: new FormControl('', [Validators.required]),
     datePermis: new FormControl('', [Validators.required]),
+    permisImages: new FormControl([], [Validators.required]),
+    cinImages: new FormControl([], [Validators.required]),
   });
 
   get form() {
@@ -65,6 +68,29 @@ export class ClientFormComponent implements OnInit {
         villePermis: this.client.villePermis,
         datePermis: this.client.datePermis,
       });
+
+      if (this.client.cinFiles) {
+        this.clientService
+          .getDocById(this.client.cinFiles.id)
+          .subscribe((data: any) => {
+            if (data && data.files && data.files.length) {
+              this.clientForm.patchValue({
+                cinImages: data.files.map((i: any) => i.path),
+              });
+            }
+          });
+      }
+      if (this.client.permisFiles) {
+        this.clientService
+          .getDocById(this.client.permisFiles.id)
+          .subscribe((data: any) => {
+            if (data && data.files && data.files.length) {
+              this.clientForm.patchValue({
+                permisImages: data.files.map((i: any) => i.path),
+              });
+            }
+          });
+      }
 
       if (this.mode === 'detail') {
         this.clientForm.disable();
