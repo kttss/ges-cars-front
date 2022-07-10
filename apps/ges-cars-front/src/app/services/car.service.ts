@@ -11,7 +11,15 @@ export class CarService {
     return this.network.post('car', car);
   }
 
+  update(id: number, car: any) {
+    return this.network.patch('car/' + id, car);
+  }
+
   getAll() {
     return this.network.get('car');
+  }
+
+  getById(id: number) {
+    return this.network.get('car/' + id);
   }
 }

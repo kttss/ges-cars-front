@@ -117,6 +117,14 @@ export const AdminLayoutRoutes: Routes = [
         path: 'new',
         component: CarFormComponent,
       },
+      {
+        path: 'edit/:id',
+        component: CarFormComponent,
+      },
+      {
+        path: 'detail/:id',
+        component: CarFormComponent,
+      },
     ],
   },
   {

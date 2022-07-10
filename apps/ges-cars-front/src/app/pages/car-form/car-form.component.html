@@ -1,5 +1,5 @@
 <ges-cars-container>
-    <ges-cars-card title="Nouvelle voiture" icon="drive_eta" classes="col-md-8">
+    <ges-cars-card title="Nouvelle voiture" icon="drive_eta" classes="col-md-10">
         <form [formGroup]="carForm">
             <div class="row">
                 <div class="col-md-6">
@@ -27,8 +27,62 @@
                     <ges-cars-field-text label="Description" [control]="form['description']"></ges-cars-field-text>
                 </div>
             </div>
-            <button mat-raised-button type="submit" class="btn btn-info pull-right"
-                (click)="onSubmit()">Ajouter</button>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="doc-container">
+                        <div class="doc-title">Carte Grise</div>
+                        <ges-cars-datepicker-field label="Date Expertation"
+                            [control]="form['carteGriseDateExpertation']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['carteGriseImages']"> </ges-cars-image-field>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="doc-container">
+                        <div class="doc-title">Autorisation Circulation</div>
+                        <ges-cars-datepicker-field label="Date Expertation"
+                            [control]="form['autorisationCirculationDateExpertation']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['autorisationCirculationImages']"> </ges-cars-image-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="doc-container">
+                        <div class="doc-title">Assurance</div>
+                        <ges-cars-datepicker-field label="Date Expertation"
+                            [control]="form['assuranceDateExpertation']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['assuranceImages']"> </ges-cars-image-field>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="doc-container">
+                        <div class="doc-title">Vignette</div>
+                        <ges-cars-datepicker-field label="Date Expertation" [control]="form['vignetteDateExpertation']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['vignetteImages']"> </ges-cars-image-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="doc-container">
+                        <div class="doc-title">Visite</div>
+                        <ges-cars-datepicker-field label="Date Expertation" [control]="form['visiteeDateExpertation']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['visiteImages']"> </ges-cars-image-field>
+                    </div>
+                </div>
+
+            </div>
+
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                *ngIf="mode==='new'">Ajouter</button>
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                *ngIf="mode==='edit'">Modifier</button>
         </form>
     </ges-cars-card>
 </ges-cars-container>

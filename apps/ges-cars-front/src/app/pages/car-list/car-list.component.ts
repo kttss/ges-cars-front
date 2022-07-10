@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CarService } from '../../services/car.service';
 import { IDataSource } from '../../shared/models/table.model';
@@ -11,7 +12,7 @@ import { IDataSource } from '../../shared/models/table.model';
 export class CarListComponent implements OnInit {
   data: IDataSource = {
     mode: {
-      edit: false,
+      edit: true,
       delete: true,
       detail: true,
     },
@@ -27,11 +28,19 @@ export class CarListComponent implements OnInit {
     rows: [],
   };
 
-  constructor(private carService: CarService) {}
+  constructor(private carService: CarService, private router: Router) {}
 
   ngOnInit(): void {
     this.carService.getAll().subscribe((res: any) => {
       this.data.rows = res;
     });
+  }
+
+  openDetail(car: any) {
+    this.router.navigate(['/car/detail/' + car.id]);
+  }
+
+  openEdit(car: any) {
+    this.router.navigate(['/car/edit/' + car.id]);
   }
 }
