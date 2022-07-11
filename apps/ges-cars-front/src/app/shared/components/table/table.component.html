@@ -9,8 +9,8 @@
                 </th>
             </tr>
         </thead>
-        <tbody *ngIf="dataSource &&  dataSource.rows">
-            <tr *ngFor="let row of dataSource.rows">
+        <tbody *ngIf="dataSource && data">
+            <tr *ngFor="let row of data">
                 <td *ngFor="let col of dataSource.columns">{{row[col.key]}}</td>
 
 

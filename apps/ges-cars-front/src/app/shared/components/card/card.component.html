@@ -4,7 +4,17 @@
             <i class="material-icons">{{icon}}</i>
         </div>
         <h4 class="card-title">{{title}}</h4>
+        <!-- <mat-form-field class="example-full-width">
+            <input matInput placeholder="Recherche">
+        </mat-form-field> -->
     </div>
+    <div class="search-input">
+        <mat-form-field>
+            <input matInput placeholder="Recherche" [formControl]="search">
+        </mat-form-field>
+    </div>
+
+
     <div class="card-body">
         <ng-content></ng-content>
     </div>

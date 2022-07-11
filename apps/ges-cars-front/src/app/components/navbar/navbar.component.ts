@@ -144,4 +144,9 @@ export class NavbarComponent implements OnInit {
 
     return title;
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }

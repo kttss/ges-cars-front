@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     body.classList.add('login-page');
     body.classList.add('off-canvas-sidebar');
     const card = document.getElementsByClassName('card')[0];
+    console.log('eee', card);
     setTimeout(function () {
       // after 1000 ms we add the class animated to the login/register card
       card.classList.remove('card-hidden');
