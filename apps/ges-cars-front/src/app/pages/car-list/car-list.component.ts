@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CarService } from '../../services/car.service';
 import { IDataSource } from '../../shared/models/table.model';
 import { AlertService } from '../../services/alert.service';
+import { CurrentRole } from '../../shared/utils/user';
+import { RoleEnum } from '../../shared/enums/role.enum';
 
 @Component({
   selector: 'ges-cars-car-list',
@@ -14,7 +16,7 @@ export class CarListComponent implements OnInit {
   data: IDataSource = {
     mode: {
       edit: true,
-      delete: true,
+      delete: CurrentRole() === RoleEnum.Admin,
       detail: true,
     },
     columns: [

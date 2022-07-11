@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 
 import { AlertService } from '../../services/alert.service';
 import { ClientService } from '../../services/client.service';
+import { RoleEnum } from '../../shared/enums/role.enum';
 import { IDataSource } from '../../shared/models/table.model';
+import { CurrentRole } from '../../shared/utils/user';
 
 declare let $: any;
 declare interface TableData {
@@ -43,7 +45,7 @@ export class ClientListComponent implements OnInit {
   data: IDataSource = {
     mode: {
       edit: true,
-      delete: true,
+      delete: CurrentRole() === RoleEnum.Admin,
       detail: true,
     },
     columns: [

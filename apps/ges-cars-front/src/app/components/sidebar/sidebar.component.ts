@@ -10,6 +10,7 @@ declare interface RouteInfo {
   type?: string;
   collapse?: string;
   children?: ChildrenItems[];
+  limited: boolean;
 }
 
 declare interface ChildrenItems {
@@ -17,9 +18,16 @@ declare interface ChildrenItems {
   title: string;
   ab: string;
   type?: string;
+  limited: boolean;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
+  {
+    path: '/dashboard',
+    title: 'Dashboard',
+    icon: 'dashboard',
+    class: '',
+    limited: false,
+  },
   // { path: '/agences', title: 'Les Agences', icon: 'dashboard', class: '' },
   // { path: '/user-profile', title: 'User Profile', icon: 'person', class: '' },
   // {
@@ -58,9 +66,10 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     type: 'sub',
     collapse: 'agence',
+    limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L' },
-      { path: 'new', title: 'new ', ab: 'N' },
+      { path: 'list', title: 'List', ab: 'L', limited: false },
+      { path: 'new', title: 'new ', ab: 'N', limited: true },
     ],
   },
   {
@@ -70,9 +79,10 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     type: 'sub',
     collapse: 'car',
+    limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L' },
-      { path: 'new', title: 'new ', ab: 'N' },
+      { path: 'list', title: 'List', ab: 'L', limited: false },
+      { path: 'new', title: 'new ', ab: 'N', limited: true },
     ],
   },
   {
@@ -82,9 +92,10 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     type: 'sub',
     collapse: 'client',
+    limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L' },
-      { path: 'new', title: 'new ', ab: 'N' },
+      { path: 'list', title: 'List', ab: 'L', limited: false },
+      { path: 'new', title: 'new ', ab: 'N', limited: false },
     ],
   },
   {
@@ -94,9 +105,10 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     type: 'sub',
     collapse: 'reservation',
+    limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L' },
-      { path: 'new', title: 'new ', ab: 'N' },
+      { path: 'list', title: 'List', ab: 'L', limited: false },
+      { path: 'new', title: 'new ', ab: 'N', limited: false },
     ],
   },
   {
@@ -106,9 +118,10 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     type: 'sub',
     collapse: 'admin',
+    limited: true,
     children: [
-      { path: 'list', title: 'Liste des admins', ab: 'L' },
-      { path: 'new', title: 'new ', ab: 'N' },
+      { path: 'list', title: 'Liste des admins', ab: 'L', limited: true },
+      { path: 'new', title: 'new ', ab: 'N', limited: true },
     ],
   },
 ];

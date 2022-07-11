@@ -7,6 +7,7 @@ import { CarService } from '../../services/car.service';
 import { ClientService } from '../../services/client.service';
 import { CarStatutEnum } from '../../shared/enums/car-statut.enum';
 import { carburantTypeEnum } from '../../shared/enums/carburant-type.enum';
+import { RoleEnum } from '../../shared/enums/role.enum';
 
 @Component({
   selector: 'ges-cars-car-form',
@@ -14,6 +15,7 @@ import { carburantTypeEnum } from '../../shared/enums/carburant-type.enum';
   styleUrls: ['./car-form.component.scss'],
 })
 export class CarFormComponent implements OnInit {
+  roles = [RoleEnum.AgenceAdmin];
   carburantTypes = [
     {
       value: carburantTypeEnum.Diesel,

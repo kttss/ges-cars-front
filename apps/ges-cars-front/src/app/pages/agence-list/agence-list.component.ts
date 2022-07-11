@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AgenceService } from '../../services/agence.service';
+import { RoleEnum } from '../../shared/enums/role.enum';
 import { IDataSource } from '../../shared/models/table.model';
+import { CurrentRole } from '../../shared/utils/user';
 
 @Component({
   selector: 'ges-cars-agence-list',
@@ -13,7 +15,7 @@ export class AgenceListComponent implements OnInit {
   data: IDataSource = {
     mode: {
       edit: true,
-      delete: true,
+      delete: CurrentRole() === RoleEnum.Admin,
       detail: true,
     },
     columns: [

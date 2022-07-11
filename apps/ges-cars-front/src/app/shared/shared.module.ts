@@ -19,6 +19,7 @@ import { ImageFieldComponent } from './components/form/image-field/image-field.c
 import { SelectFieldComponent } from './components/form/select-field/select-field.component';
 import { ImageComponent } from './components/image/image.component';
 import { DatepickerFieldComponent } from './components/form/datepicker-field/datepicker-field.component';
+import { AccessControlDirective } from './directive/access-control.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DatepickerFieldComponent } from './components/form/datepicker-field/dat
     SelectFieldComponent,
     ImageComponent,
     DatepickerFieldComponent,
+    AccessControlDirective,
   ],
   imports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { DatepickerFieldComponent } from './components/form/datepicker-field/dat
     MatDatepickerModule,
     MatNativeDateModule,
     DatepickerFieldComponent,
+    AccessControlDirective,
   ],
 })
 export class SharedModule {}
