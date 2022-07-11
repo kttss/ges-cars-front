@@ -3,6 +3,14 @@
         <form [formGroup]="carForm">
             <div class="row">
                 <div class="col-md-6">
+                    <ges-cars-select-field label="Agence" [control]="form['agence']" [options]="agenceList">
+                    </ges-cars-select-field>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <ges-cars-field-text label="Maruqe" [control]="form['marque']"></ges-cars-field-text>
                 </div>
                 <div class="col-md-6">

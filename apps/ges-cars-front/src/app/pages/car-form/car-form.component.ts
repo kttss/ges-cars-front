@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AgenceService } from '../../services/agence.service';
 
 import { AlertService } from '../../services/alert.service';
 import { CarService } from '../../services/car.service';
@@ -40,7 +41,9 @@ export class CarFormComponent implements OnInit {
       viewValue: 'en panne',
     },
   ];
+  agenceList = [];
   carForm = new FormGroup({
+    agence: new FormControl('', [Validators.required]),
     marque: new FormControl('', [Validators.required]),
     model: new FormControl('', [Validators.required]),
     matricule: new FormControl('', [Validators.required]),
@@ -73,10 +76,20 @@ export class CarFormComponent implements OnInit {
     private router: Router,
     private alert: AlertService,
     private route: ActivatedRoute,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private agenceService: AgenceService
   ) {}
 
   ngOnInit(): void {
+    this.agenceService.getAll().subscribe((res: any) => {
+      this.agenceList = res.map((a: any) => {
+        return {
+          value: a.id,
+          viewValue: a.name,
+        };
+      });
+      console.log(this.agenceList);
+    });
     this.route.url.subscribe((url) => {
       if (url.length === 2) {
         const id = Number(url[1].path);
@@ -102,6 +115,11 @@ export class CarFormComponent implements OnInit {
         statut,
         description,
       });
+      if (this.car.agence) {
+        this.carForm.patchValue({
+          agence: this.car.agence.id,
+        });
+      }
 
       if (this.car.autorisationCirculation) {
         this.carForm.patchValue({
