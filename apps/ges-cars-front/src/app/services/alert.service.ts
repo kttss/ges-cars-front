@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import swal from 'sweetalert2';
 
 declare let $: any;
 
@@ -44,5 +45,34 @@ export class AlertService {
           '</div>',
       }
     );
+  }
+
+  handleDelete() {
+    return swal({
+      title: 'Suppression!',
+      text: 'Voulez-vous vraiment supprimer?',
+      // type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, Supprimer',
+      cancelButtonText: 'No',
+      confirmButtonClass: 'btn btn-danger',
+      cancelButtonClass: 'btn btn-link',
+      buttonsStyling: false,
+    });
+    // .then((result) => {
+    //   if (result.value) {
+    //     request.subscribe((res: any) => {});
+    //   }
+    // });
+  }
+
+  handleSucces() {
+    swal({
+      title: 'Supprimé !',
+      text: '',
+      type: 'success',
+      confirmButtonClass: 'btn btn-success',
+      buttonsStyling: false,
+    }).catch(swal.noop);
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { AlertService } from '../../services/alert.service';
 import { ClientService } from '../../services/client.service';
 import { IDataSource } from '../../shared/models/table.model';
 
@@ -60,7 +62,11 @@ export class ClientListComponent implements OnInit {
     rows: [],
   };
 
-  constructor(private clientService: ClientService, private router: Router) {}
+  constructor(
+    private clientService: ClientService,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.clientService.getAll().subscribe((res: any) => {
@@ -74,5 +80,16 @@ export class ClientListComponent implements OnInit {
 
   openEdit(client: any) {
     this.router.navigate(['/client/edit/' + client.id]);
+  }
+
+  ondelete(car: any) {
+    this.alert.handleDelete().then((result) => {
+      if (result.value) {
+        this.clientService.delete(car.id).subscribe((res: any) => {
+          this.alert.handleSucces();
+          this.ngOnInit();
+        });
+      }
+    });
   }
 }

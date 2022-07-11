@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { CarService } from '../../services/car.service';
 import { IDataSource } from '../../shared/models/table.model';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'ges-cars-car-list',
@@ -28,7 +29,11 @@ export class CarListComponent implements OnInit {
     rows: [],
   };
 
-  constructor(private carService: CarService, private router: Router) {}
+  constructor(
+    private carService: CarService,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.carService.getAll().subscribe((res: any) => {
@@ -42,5 +47,16 @@ export class CarListComponent implements OnInit {
 
   openEdit(car: any) {
     this.router.navigate(['/car/edit/' + car.id]);
+  }
+
+  ondelete(car: any) {
+    this.alert.handleDelete().then((result) => {
+      if (result.value) {
+        this.carService.delete(car.id).subscribe((res: any) => {
+          this.alert.handleSucces();
+          this.ngOnInit();
+        });
+      }
+    });
   }
 }

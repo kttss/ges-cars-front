@@ -20,4 +20,8 @@ export class NetworkService {
   patch(url: string, body: any) {
     return this.http.patch(environment.apiUrl + url, body);
   }
+
+  delete(url: string) {
+    return this.http.delete(environment.apiUrl + url);
+  }
 }

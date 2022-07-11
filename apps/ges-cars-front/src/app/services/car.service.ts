@@ -22,4 +22,8 @@ export class CarService {
   getById(id: number) {
     return this.network.get('car/' + id);
   }
+
+  delete(id: number) {
+    return this.network.delete('car/' + id);
+  }
 }

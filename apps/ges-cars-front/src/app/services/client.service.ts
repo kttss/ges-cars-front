@@ -27,4 +27,8 @@ export class ClientService {
   getDocById(id: number) {
     return this.network.get('client/doc/' + id);
   }
+
+  delete(id: number) {
+    return this.network.delete('client/' + id);
+  }
 }
