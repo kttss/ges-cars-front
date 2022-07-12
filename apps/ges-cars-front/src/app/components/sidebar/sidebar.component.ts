@@ -19,6 +19,7 @@ declare interface ChildrenItems {
   ab: string;
   type?: string;
   limited: boolean;
+  description?: string;
 }
 export const ROUTES: RouteInfo[] = [
   {
@@ -68,8 +69,20 @@ export const ROUTES: RouteInfo[] = [
     collapse: 'agence',
     limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L', limited: false },
-      { path: 'new', title: 'new ', ab: 'N', limited: true },
+      {
+        path: 'list',
+        title: 'List',
+        ab: 'L',
+        description: 'Liste des agences',
+        limited: false,
+      },
+      {
+        path: 'new',
+        title: 'new ',
+        ab: 'N',
+        description: 'Nouvelle agence',
+        limited: true,
+      },
     ],
   },
   {
@@ -81,8 +94,20 @@ export const ROUTES: RouteInfo[] = [
     collapse: 'car',
     limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L', limited: false },
-      { path: 'new', title: 'new ', ab: 'N', limited: true },
+      {
+        path: 'list',
+        title: 'List',
+        ab: 'L',
+        description: 'Liste des Voitures',
+        limited: false,
+      },
+      {
+        path: 'new',
+        title: 'new ',
+        ab: 'N',
+        description: 'Nouvelle Voiture',
+        limited: true,
+      },
     ],
   },
   {
@@ -94,8 +119,20 @@ export const ROUTES: RouteInfo[] = [
     collapse: 'client',
     limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L', limited: false },
-      { path: 'new', title: 'new ', ab: 'N', limited: false },
+      {
+        path: 'list',
+        title: 'List',
+        ab: 'L',
+        description: 'liste des clients',
+        limited: false,
+      },
+      {
+        path: 'new',
+        title: 'new ',
+        ab: 'N',
+        description: 'Nouveau client',
+        limited: false,
+      },
     ],
   },
   {
@@ -107,8 +144,20 @@ export const ROUTES: RouteInfo[] = [
     collapse: 'reservation',
     limited: false,
     children: [
-      { path: 'list', title: 'List', ab: 'L', limited: false },
-      { path: 'new', title: 'new ', ab: 'N', limited: false },
+      {
+        path: 'list',
+        title: 'List',
+        ab: 'L',
+        description: 'Liste des Reservations',
+        limited: false,
+      },
+      {
+        path: 'new',
+        title: 'new ',
+        ab: 'N',
+        description: 'Nouvelle Reservation',
+        limited: false,
+      },
     ],
   },
   {
@@ -120,8 +169,20 @@ export const ROUTES: RouteInfo[] = [
     collapse: 'admin',
     limited: true,
     children: [
-      { path: 'list', title: 'Liste des admins', ab: 'L', limited: true },
-      { path: 'new', title: 'new ', ab: 'N', limited: true },
+      {
+        path: 'list',
+        title: 'Liste des admins',
+        ab: 'L',
+        description: 'liste des Admins',
+        limited: true,
+      },
+      {
+        path: 'new',
+        title: 'new ',
+        ab: 'N',
+        description: 'Nouveau Admin',
+        limited: true,
+      },
     ],
   },
 ];

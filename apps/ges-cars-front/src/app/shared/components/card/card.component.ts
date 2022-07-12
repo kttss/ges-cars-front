@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   @Input() title = '';
   @Input() icon = '';
   @Input() classes = '';
+  @Input() withSearch = false;
   search = new FormControl();
 
   constructor(private searchService: SearchService) {}

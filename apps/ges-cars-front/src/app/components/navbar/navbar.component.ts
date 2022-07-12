@@ -136,7 +136,7 @@ export class NavbarComponent implements OnInit {
       } else if (this.listTitles[item].children) {
         this.listTitles[item].children.forEach((e: any) => {
           if (this.listTitles[item].path + '/' + e.path === titlee) {
-            title = e.title;
+            title = e.description;
           }
         });
       }

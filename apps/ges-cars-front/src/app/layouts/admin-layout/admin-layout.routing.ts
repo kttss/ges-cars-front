@@ -159,6 +159,14 @@ export const AdminLayoutRoutes: Routes = [
         path: 'new',
         component: ReservationFormComponent,
       },
+      {
+        path: 'edit/:id',
+        component: ReservationFormComponent,
+      },
+      {
+        path: 'detail/:id',
+        component: ReservationFormComponent,
+      },
     ],
   },
   {
