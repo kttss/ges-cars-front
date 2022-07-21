@@ -185,6 +185,13 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+  {
+    path: '/logs',
+    title: 'Logs',
+    icon: 'history',
+    class: '',
+    limited: false,
+  },
 ];
 
 @Component({

@@ -18,6 +18,7 @@ import { ReservationFormComponent } from '../../pages/reservation-form/reservati
 import { ReservationListComponent } from '../../pages/reservation-list/reservation-list.component';
 import { AdminListComponent } from '../../pages/admin-list/admin-list.component';
 import { AdminFormComponent } from '../../pages/admin-form/admin-form.component';
+import { LogsComponent } from '../../pages/logs/logs.component';
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -189,5 +190,9 @@ export const AdminLayoutRoutes: Routes = [
         component: AdminFormComponent,
       },
     ],
+  },
+  {
+    path: 'logs',
+    component: LogsComponent,
   },
 ];

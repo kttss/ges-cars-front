@@ -16,6 +16,10 @@ export class AgenceService {
     return this.network.get('agency');
   }
 
+  getAllLogs() {
+    return this.network.get('agency/logs');
+  }
+
   getById(id: number) {
     return this.network.get('agency/' + id);
   }

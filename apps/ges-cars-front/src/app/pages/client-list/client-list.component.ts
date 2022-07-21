@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 import { AlertService } from '../../services/alert.service';
 import { ClientService } from '../../services/client.service';
@@ -72,7 +73,13 @@ export class ClientListComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientService.getAll().subscribe((res: any) => {
-      this.data.rows = res;
+      this.data.rows = res.map((item: any) => {
+        return {
+          ...item,
+          datePermis: moment(item.datePermis).format('DD/MM/YYYY'),
+          birthday: moment(item.birthday).format('DD/MM/YYYY'),
+        };
+      });
     });
   }
 

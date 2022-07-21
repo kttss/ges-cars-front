@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  MatRippleModule,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -72,5 +76,6 @@ import { AccessControlDirective } from './directive/access-control.directive';
     DatepickerFieldComponent,
     AccessControlDirective,
   ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
 export class SharedModule {}

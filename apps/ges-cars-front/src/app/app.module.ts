@@ -9,6 +9,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { TokenInterceptor } from './services/token.interceptor';
+import { LogsComponent } from './pages/logs/logs.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,12 @@ import { TokenInterceptor } from './services/token.interceptor';
     AppRoutingModule,
     SharedModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    LoginComponent,
+    LogsComponent,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
