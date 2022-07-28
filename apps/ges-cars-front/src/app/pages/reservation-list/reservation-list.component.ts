@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { AlertService } from '../../services/alert.service';
 import { ReservationService } from '../../services/reservation.service';
 import { RoleEnum } from '../../shared/enums/role.enum';
@@ -38,7 +39,15 @@ export class ReservationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.reservationService.getAll().subscribe((res: any) => {
-      this.data.rows = res;
+      this.data.rows = res.map((item: any) => {
+        return {
+          ...item,
+          satrtAt: moment(item.satrtAt).format('DD/MM/YYYY'),
+          endAt: moment(item.endAt).format('DD/MM/YYYY'),
+          creatAt: moment(item.creatAt).format('DD/MM/YYYY'),
+          backAt: moment(item.backAt).format('DD/MM/YYYY'),
+        };
+      });
     });
   }
 

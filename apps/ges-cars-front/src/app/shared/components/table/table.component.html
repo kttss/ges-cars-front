@@ -31,5 +31,9 @@
                 </td>
             </tr>
         </tbody>
+        <tr *ngIf="data && !data.length">
+            <td [colSpan]="dataSource ? dataSource.columns.length : 1" align="center" valign="center">pas de résultats
+            </td>
+        </tr>
     </table>
 </div>

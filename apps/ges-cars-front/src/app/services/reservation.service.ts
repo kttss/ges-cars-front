@@ -26,4 +26,8 @@ export class ReservationService {
   delete(id: number) {
     return this.network.delete('contrat/' + id);
   }
+
+  getStatistique() {
+    return this.network.get('contrat/statistique');
+  }
 }

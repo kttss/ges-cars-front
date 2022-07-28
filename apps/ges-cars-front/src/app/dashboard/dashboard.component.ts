@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { ReservationService } from '../services/reservation.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,8 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor() {}
+  data: any = {};
+  constructor(private reservationService: ReservationService) {}
   startAnimationForLineChart(chart: any) {
     let seq: any, delays: any, durations: any;
     seq = 0;
@@ -68,7 +70,12 @@ export class DashboardComponent implements OnInit {
 
     seq2 = 0;
   }
+
   ngOnInit() {
+    this.reservationService.getStatistique().subscribe((res) => {
+      this.data = res;
+    });
+
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
