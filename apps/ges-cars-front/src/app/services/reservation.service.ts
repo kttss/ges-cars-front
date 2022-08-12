@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { NetworkService } from './network.service';
 
 @Injectable({
@@ -29,5 +30,17 @@ export class ReservationService {
 
   getStatistique() {
     return this.network.get('contrat/statistique');
+  }
+
+  generateContrat(id: number) {
+    return this.network.get('contrat/pdf/' + id);
+  }
+
+  getContratUrl(filename: string) {
+    return environment.apiUrl + 'upload/readcontrat/' + filename;
+  }
+
+  getcontratdata(id: number) {
+    return this.network.get('contrat/pdf/' + id);
   }
 }

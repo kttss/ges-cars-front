@@ -190,7 +190,7 @@ export const ROUTES: RouteInfo[] = [
     title: 'Logs',
     icon: 'history',
     class: '',
-    limited: false,
+    limited: true,
   },
 ];
 

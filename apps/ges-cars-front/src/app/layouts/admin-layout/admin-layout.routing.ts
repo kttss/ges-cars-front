@@ -19,6 +19,7 @@ import { ReservationListComponent } from '../../pages/reservation-list/reservati
 import { AdminListComponent } from '../../pages/admin-list/admin-list.component';
 import { AdminFormComponent } from '../../pages/admin-form/admin-form.component';
 import { LogsComponent } from '../../pages/logs/logs.component';
+import { ContratPageComponent } from '../../pages/contrat-page/contrat-page.component';
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -167,6 +168,10 @@ export const AdminLayoutRoutes: Routes = [
       {
         path: 'detail/:id',
         component: ReservationFormComponent,
+      },
+      {
+        path: 'detail/:id/pdf',
+        component: ContratPageComponent,
       },
     ],
   },

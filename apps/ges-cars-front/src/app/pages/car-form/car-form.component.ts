@@ -49,7 +49,7 @@ export class CarFormComponent implements OnInit {
     matricule: new FormControl('', [Validators.required]),
     carburant: new FormControl('', [Validators.required]),
     statut: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    description: new FormControl('', []),
     carteGriseImages: new FormControl([], [Validators.required]),
     autorisationCirculationImages: new FormControl([], [Validators.required]),
     assuranceImages: new FormControl([], [Validators.required]),

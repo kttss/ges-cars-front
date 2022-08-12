@@ -59,6 +59,12 @@
                 *ngIf="mode==='new'">Ajouter</button>
             <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
                 *ngIf="mode==='edit'">Modifier</button>
+
+            <!-- <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="btn.click()"
+                *ngIf="mode==='detail' && reservation && reservation.file">Telecharger</button> -->
+            <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="viewcontrat()"
+                *ngIf="mode==='detail'">Afficher Contrat</button>
+            <!-- <a href="{{urlContrat}}" #btn download={{reservation.file}}></a> -->
         </form>
     </ges-cars-card>
 </ges-cars-container>

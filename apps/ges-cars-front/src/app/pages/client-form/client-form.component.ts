@@ -25,6 +25,8 @@ export class ClientFormComponent implements OnInit {
     datePermis: new FormControl('', [Validators.required]),
     permisImages: new FormControl([], [Validators.required]),
     cinImages: new FormControl([], [Validators.required]),
+    dateCin: new FormControl([], [Validators.required]),
+    permis: new FormControl([], [Validators.required]),
   });
 
   get form() {
@@ -67,6 +69,8 @@ export class ClientFormComponent implements OnInit {
         villeCin: this.client.villeCin,
         villePermis: this.client.villePermis,
         datePermis: this.client.datePermis,
+        permis: this.client.permis,
+        dateCin: this.client.dateCin,
       });
 
       if (this.client.cinFiles) {

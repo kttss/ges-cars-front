@@ -23,6 +23,7 @@ import { AdminFormComponent } from '../../pages/admin-form/admin-form.component'
 import { ReservationListComponent } from '../../pages/reservation-list/reservation-list.component';
 import { ReservationFormComponent } from '../../pages/reservation-form/reservation-form.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ContratPageComponent } from '../../pages/contrat-page/contrat-page.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { SharedModule } from '../../shared/shared.module';
     AdminFormComponent,
     ReservationListComponent,
     ReservationFormComponent,
+    ContratPageComponent,
   ],
 })
 export class AdminLayoutModule {}

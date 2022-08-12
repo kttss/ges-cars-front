@@ -181,4 +181,20 @@ export class ReservationFormComponent implements OnInit {
       return 'Edit Reservation';
     }
   }
+
+  generate() {
+    this.reservationService
+      .generateContrat(this.reservation.id)
+      .subscribe((res) => {});
+  }
+
+  get urlContrat() {
+    return this.reservationService.getContratUrl(this.reservation.file);
+  }
+
+  viewcontrat() {
+    this.router.navigate([
+      'reservation/detail/' + this.reservation.id + '/pdf',
+    ]);
+  }
 }

@@ -29,32 +29,27 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <ges-cars-field-text label="CIN" [control]="form['cin']"></ges-cars-field-text>
-                </div>
-                <div class="col-md-6">
-                    <ges-cars-datepicker-field label="Date Permis" [control]="form['datePermis']">
-                    </ges-cars-datepicker-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
 
-                    <ges-cars-field-text label="Ville CIN" [control]="form['villeCin']"></ges-cars-field-text>
+                    <div class="doc-container">
+                        <div class="doc-title">CIN</div>
+                        <ges-cars-field-text label="CIN" [control]="form['cin']"></ges-cars-field-text>
+                        <ges-cars-field-text label="Ville" [control]="form['villeCin']"></ges-cars-field-text>
+                        <ges-cars-datepicker-field label="Date Permis" [control]="form['dateCin']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['cinImages']"></ges-cars-image-field>
+                    </div>
                 </div>
                 <div class="col-md-6">
 
-                    <ges-cars-field-text label="Ville Permis" [control]="form['villePermis']"></ges-cars-field-text>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="label-client">CIN photos</div>
-                    <ges-cars-image-field [control]="form['cinImages']"></ges-cars-image-field>
 
-                </div>
-                <div class="col-md-6">
-                    <div class="label-client">Permis photos</div>
-                    <ges-cars-image-field [control]="form['permisImages']"></ges-cars-image-field>
+                    <div class="doc-container">
+                        <div class="doc-title">Permis</div>
+                        <ges-cars-field-text label="Permis" [control]="form['permis']"></ges-cars-field-text>
+                        <ges-cars-field-text label="Ville Permis" [control]="form['villePermis']"></ges-cars-field-text>
+                        <ges-cars-datepicker-field label="Date Permis" [control]="form['datePermis']">
+                        </ges-cars-datepicker-field>
+                        <ges-cars-image-field [control]="form['permisImages']"></ges-cars-image-field>
+                    </div>
                 </div>
             </div>
 
