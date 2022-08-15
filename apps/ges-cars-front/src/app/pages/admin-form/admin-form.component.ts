@@ -63,8 +63,10 @@ export class AdminFormComponent implements OnInit {
 
   onSubmit() {
     if (this.userForm.invalid) {
-      this.userForm.markAllAsTouched();
-      this.userForm.markAsDirty();
+      Object.keys(this.userForm.controls).forEach((control) => {
+        this.userForm.get(control)?.markAsDirty();
+        this.userForm.get(control)?.markAsTouched();
+      });
     } else {
       if (this.mode === 'new') {
         this.handleAdd();

@@ -81,8 +81,10 @@ export class NewAgenceComponent implements OnInit {
 
   onSubmit() {
     if (this.agenceForm.invalid) {
-      this.agenceForm.markAllAsTouched();
-      this.agenceForm.markAsDirty();
+      Object.keys(this.agenceForm.controls).forEach((control) => {
+        this.agenceForm.get(control)?.markAsDirty();
+        this.agenceForm.get(control)?.markAsTouched();
+      });
     } else {
       if (this.mode === 'new') {
         this.handleAdd();

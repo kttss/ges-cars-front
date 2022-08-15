@@ -5,3 +5,9 @@
         [disable]="control.disabled">
     </tag-input>
 </ng-container>
+
+<div class="error__container" *ngIf="control && control.touched && control.dirty && control.errors">
+    <mat-error>
+        {{getMessage()}}
+    </mat-error>
+</div>

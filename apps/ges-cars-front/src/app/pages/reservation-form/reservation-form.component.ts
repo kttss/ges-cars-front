@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgenceService } from '../../services/agence.service';
 import { AlertService } from '../../services/alert.service';
@@ -16,16 +16,16 @@ import { ReservationStatutEnum } from '../../shared/enums/reservation-statut.enu
 })
 export class ReservationFormComponent implements OnInit {
   reservationForm = new FormGroup({
-    car: new FormControl(),
-    agence: new FormControl(),
-    client: new FormControl(),
-    paiement: new FormControl(),
-    satrtAt: new FormControl(),
-    endAt: new FormControl(),
-    creatAt: new FormControl(),
-    backAt: new FormControl(),
-    statut: new FormControl(),
-    price: new FormControl(),
+    car: new FormControl('', [Validators.required]),
+    agence: new FormControl('', [Validators.required]),
+    client: new FormControl('', [Validators.required]),
+    paiement: new FormControl('', [Validators.required]),
+    satrtAt: new FormControl('', [Validators.required]),
+    endAt: new FormControl('', [Validators.required]),
+    creatAt: new FormControl('', [Validators.required]),
+    backAt: new FormControl('', [Validators.required]),
+    statut: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
   });
 
   clientList = [];
@@ -135,6 +135,7 @@ export class ReservationFormComponent implements OnInit {
 
   onSubmit() {
     if (this.reservationForm.invalid) {
+      console.log('ddd');
       Object.keys(this.reservationForm.controls).forEach((control) => {
         this.reservationForm.get(control)?.markAsDirty();
         this.reservationForm.get(control)?.markAsTouched();
