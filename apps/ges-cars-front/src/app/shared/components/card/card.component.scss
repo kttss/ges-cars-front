@@ -9,4 +9,10 @@
   top: 10px;
   z-index: 10;
   width: 200px;
+
+  @media (max-width: 768px) {
+    position: relative;
+    margin: 0 20px;
+    width: 100%;
+  }
 }

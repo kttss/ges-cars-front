@@ -14315,3 +14315,13 @@ footer .btn {
     top: 80px;
   }
 }
+
+
+.main-panel {
+  overflow: scroll !important;
+}
+
+
+.mat-focus-indicator.navbar-toggler.mat-raised-button.mat-button-base {
+  box-shadow: none;
+}
