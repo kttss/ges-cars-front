@@ -6,6 +6,8 @@ import {
   PathLocationStrategy,
 } from '@angular/common';
 import { Router } from '@angular/router';
+import { CarService } from '../../services/car.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-navbar',
@@ -20,11 +22,13 @@ export class NavbarComponent implements OnInit {
   private sidebarVisible: boolean;
 
   $layer: any = null;
+  notifList: any[] = [];
 
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private carService: CarService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -41,6 +45,48 @@ export class NavbarComponent implements OnInit {
         this.$layer.remove();
         this.mobile_menu_visible = 0;
       }
+    });
+
+    this.carService.getAll().subscribe((data: any) => {
+      data.forEach((item: any) => {
+        if (
+          item.dateVidange &&
+          moment().diff(moment(item.dateVidange), 'days') >= 60
+        ) {
+          const text = 'Verifier vidange de la voiture ';
+          const n =
+            text +
+            '' +
+            item.matricule +
+            ' - ' +
+            item.marque +
+            ' - ' +
+            item.model;
+          this.notifList.push(n + '');
+        }
+
+        if (
+          item.assurance &&
+          item.assurance.DateExpiration &&
+          moment().diff(moment(item.assurance.DateExpiration), 'days') > -2
+        ) {
+          const text = 'Verifier assurance de la voiture ';
+          const n =
+            text + '' + item.matricule + ' - ' + item.marque + '-' + item.model;
+          this.notifList.push(n + '');
+        }
+
+        if (
+          item.visite &&
+          item.visite.DateExpiration &&
+          moment().diff(moment(item.visite.DateExpiration), 'days') > -2
+        ) {
+          const text = 'Verifier la visite de la voiture ';
+          const n =
+            text + '' + item.matricule + ' - ' + item.marque + '-' + item.model;
+          this.notifList.push(n + '');
+        }
+      });
     });
   }
 

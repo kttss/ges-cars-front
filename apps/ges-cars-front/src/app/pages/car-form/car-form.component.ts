@@ -54,14 +54,15 @@ export class CarFormComponent implements OnInit {
     autorisationCirculationImages: new FormControl([], [Validators.required]),
     assuranceImages: new FormControl([], [Validators.required]),
     vignetteImages: new FormControl([], [Validators.required]),
-    visiteImages: new FormControl([], [Validators.required]),
+    visiteImages: new FormControl([], []),
     carteGriseDateExpertation: new FormControl('', [Validators.required]),
     autorisationCirculationDateExpertation: new FormControl('', [
       Validators.required,
     ]),
     assuranceDateExpertation: new FormControl('', [Validators.required]),
     vignetteDateExpertation: new FormControl('', [Validators.required]),
-    visiteeDateExpertation: new FormControl('', [Validators.required]),
+    visiteeDateExpertation: new FormControl('', []),
+    dateVidange: new FormControl('', []),
   });
 
   get form() {
@@ -104,8 +105,15 @@ export class CarFormComponent implements OnInit {
     this.carService.getById(id).subscribe((res) => {
       console.log('dd', res);
       this.car = res;
-      const { carburant, description, marque, matricule, model, statut } =
-        this.car;
+      const {
+        carburant,
+        description,
+        marque,
+        matricule,
+        model,
+        statut,
+        dateVidange,
+      } = this.car;
 
       this.carForm.patchValue({
         marque,
@@ -114,6 +122,7 @@ export class CarFormComponent implements OnInit {
         carburant,
         statut,
         description,
+        dateVidange,
       });
       if (this.car.agence) {
         this.carForm.patchValue({

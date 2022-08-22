@@ -1,0 +1,7 @@
+.dropdown-menu.dropdown-menu-right {
+    margin-top: 20px;
+}
+
+.dropdown-menu.dropdown-menu-right.show {
+    visibility: visible;
+}
