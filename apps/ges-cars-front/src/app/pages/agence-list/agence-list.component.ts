@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AgenceService } from '../../services/agence.service';
+import { AlertService } from '../../services/alert.service';
 import { RoleEnum } from '../../shared/enums/role.enum';
 import { IDataSource } from '../../shared/models/table.model';
 import { CurrentRole } from '../../shared/utils/user';
@@ -29,7 +30,11 @@ export class AgenceListComponent implements OnInit {
     ],
     rows: [],
   };
-  constructor(private agenceService: AgenceService, private router: Router) {}
+  constructor(
+    private agenceService: AgenceService,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.agenceService.getAll().subscribe((res: any) => {
@@ -54,5 +59,16 @@ export class AgenceListComponent implements OnInit {
 
   openEdit(agnce: any) {
     this.router.navigate(['/agence/edit/' + agnce.id]);
+  }
+
+  ondelete(agence: any) {
+    this.alert.handleDelete().then((result) => {
+      if (result.value) {
+        this.agenceService.delete(agence.id).subscribe((res: any) => {
+          this.alert.handleSucces();
+          this.ngOnInit();
+        });
+      }
+    });
   }
 }

@@ -49,7 +49,7 @@ export class ReservationFormComponent implements OnInit {
 
   paimentTypes = [
     {
-      value: PaiementTypeEnum.Cheque,
+      value: PaiementTypeEnum.Espece,
       viewValue: 'Espèce',
     },
     {

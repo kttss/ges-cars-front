@@ -27,4 +27,8 @@ export class AgenceService {
   update(id: string, agence: any) {
     return this.network.patch('agency/' + id, agence);
   }
+
+  delete(id: number) {
+    return this.network.delete('agency/' + id);
+  }
 }
