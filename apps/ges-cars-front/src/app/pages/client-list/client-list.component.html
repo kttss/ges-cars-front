@@ -1,7 +1,7 @@
 <ges-cars-container>
     <ges-cars-card title="Liste des clients" icon="assignment" [withSearch]="true">
         <ges-cars-table [dataSource]="data" (viewDetail)="openDetail($event)" (onedit)="openEdit($event)"
-            (ondelete)="ondelete($event)">
+            (ondelete)="ondelete($event)" (oncreate)="onCreateReservation($event)">
         </ges-cars-table>
     </ges-cars-card>
 </ges-cars-container>

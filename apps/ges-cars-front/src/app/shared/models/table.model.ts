@@ -9,6 +9,7 @@ declare interface IMode {
   edit: boolean;
   delete: boolean;
   detail: boolean;
+  create?: boolean;
 }
 
 declare interface IColumns {

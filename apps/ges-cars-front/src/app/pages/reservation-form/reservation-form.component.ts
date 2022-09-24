@@ -83,6 +83,9 @@ export class ReservationFormComponent implements OnInit {
         };
       });
     });
+    this.route.queryParams.subscribe((res: any) => {
+      this.reservationForm.patchValue({ client: Number(res.client) });
+    });
 
     this.agenceService.getAll().subscribe((res: any) => {
       this.agenceList = res.map((r: any) => {

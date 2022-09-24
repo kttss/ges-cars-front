@@ -15,7 +15,11 @@
 
 
                 <td class="td-actions text-right"
-                    *ngIf="dataSource.mode.detail || dataSource.mode.edit || dataSource.mode.delete">
+                    *ngIf="dataSource.mode.detail || dataSource.mode.edit || dataSource.mode.delete || dataSource.mode.create">
+                    <button mat-raised-button type="button" class="btn btn-info btn-link" *ngIf="dataSource.mode.create"
+                        (click)="handleCreate(row)">
+                        <i class="material-icons">content_paste</i>
+                    </button>
                     <button mat-raised-button type="button" class="btn btn-info btn-link" *ngIf="dataSource.mode.detail"
                         (click)="handleViewDetail(row)">
                         <i class="material-icons">visibility</i>

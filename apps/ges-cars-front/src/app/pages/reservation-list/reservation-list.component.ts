@@ -21,6 +21,7 @@ export class ReservationListComponent implements OnInit {
     },
     columns: [
       { key: 'id', title: '#' },
+      { key: 'client', title: 'Client' },
       { key: 'satrtAt', title: 'Date debut' },
       { key: 'endAt', title: 'Date fIn' },
       { key: 'creatAt', title: 'Date creation' },
@@ -46,6 +47,7 @@ export class ReservationListComponent implements OnInit {
           endAt: moment(item.endAt).format('DD/MM/YYYY'),
           creatAt: moment(item.creatAt).format('DD/MM/YYYY'),
           backAt: moment(item.backAt).format('DD/MM/YYYY'),
+          client: item.client.lastname + ' ' + item.client.firstname,
         };
       });
     });

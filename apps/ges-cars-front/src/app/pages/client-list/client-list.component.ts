@@ -48,6 +48,7 @@ export class ClientListComponent implements OnInit {
       edit: true,
       delete: CurrentRole() === RoleEnum.Admin,
       detail: true,
+      create: true,
     },
     columns: [
       { key: 'id', title: '#' },
@@ -91,14 +92,20 @@ export class ClientListComponent implements OnInit {
     this.router.navigate(['/client/edit/' + client.id]);
   }
 
-  ondelete(car: any) {
+  ondelete(client: any) {
     this.alert.handleDelete().then((result) => {
       if (result.value) {
-        this.clientService.delete(car.id).subscribe((res: any) => {
+        this.clientService.delete(client.id).subscribe((res: any) => {
           this.alert.handleSucces();
           this.ngOnInit();
         });
       }
+    });
+  }
+
+  onCreateReservation(client: any) {
+    this.router.navigate(['/reservation/new'], {
+      queryParams: { client: client.id },
     });
   }
 }

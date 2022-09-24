@@ -186,7 +186,7 @@ export class CarFormComponent implements OnInit {
           assuranceDateExpertation: this.car.assurance.DateExpiration,
         });
         this.clientService
-          .getDocById(this.car.autorisationCirculation.id)
+          .getDocById(this.car.assurance.id)
           .subscribe((res: any) => {
             this.carForm.patchValue({
               assuranceImages: res.files.map((f: any) => f.path),

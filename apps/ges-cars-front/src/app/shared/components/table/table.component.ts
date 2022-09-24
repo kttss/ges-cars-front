@@ -12,6 +12,7 @@ export class TableComponent implements OnInit {
   @Output() onedit = new EventEmitter();
   @Output() ondelete = new EventEmitter();
   @Output() viewDetail = new EventEmitter();
+  @Output() oncreate = new EventEmitter();
   @Input() dataSource: IDataSource | undefined;
 
   search = '';
@@ -48,5 +49,10 @@ export class TableComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleViewDetail(row: any) {
     this.viewDetail.emit(row);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleCreate(row: any) {
+    this.oncreate.emit(row);
   }
 }
