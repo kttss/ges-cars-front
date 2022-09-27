@@ -55,6 +55,13 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <ges-cars-select-field label="Chauffeur" [control]="form['chauffeur']" [options]="clientList">
+                    </ges-cars-select-field>
+                </div>
+            </div>
+
             <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
                 *ngIf="mode==='new'">Ajouter</button>
             <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"

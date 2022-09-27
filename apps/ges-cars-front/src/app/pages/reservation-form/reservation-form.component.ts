@@ -26,6 +26,7 @@ export class ReservationFormComponent implements OnInit {
     backAt: new FormControl('', [Validators.required]),
     statut: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
+    chauffeur: new FormControl(null, []),
   });
 
   clientList = [];
@@ -122,6 +123,9 @@ export class ReservationFormComponent implements OnInit {
         car: this.reservation.car ? this.reservation.car.id : null,
         agence: this.reservation.agence ? this.reservation.agence.id : null,
         client: this.reservation.client ? this.reservation.client.id : null,
+        chauffeur: this.reservation.chauffeur
+          ? this.reservation.chauffeur.id
+          : null,
         paiement: res.paiement,
         satrtAt: res.satrtAt,
         endAt: res.endAt,
@@ -138,7 +142,6 @@ export class ReservationFormComponent implements OnInit {
 
   onSubmit() {
     if (this.reservationForm.invalid) {
-      console.log('ddd');
       Object.keys(this.reservationForm.controls).forEach((control) => {
         this.reservationForm.get(control)?.markAsDirty();
         this.reservationForm.get(control)?.markAsTouched();
