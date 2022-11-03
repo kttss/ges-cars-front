@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { NetworkService } from './network.service';
@@ -7,6 +8,7 @@ import { NetworkService } from './network.service';
   providedIn: 'root',
 })
 export class FileService {
+  showImage = new Subject();
   constructor(private network: NetworkService) {}
 
   upload(file: FormData) {

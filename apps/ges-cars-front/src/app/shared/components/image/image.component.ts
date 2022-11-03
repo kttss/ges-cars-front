@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { window } from 'rxjs';
 
 import { FileService } from '../../../services/file.service';
 
@@ -34,5 +35,17 @@ export class ImageComponent {
 
   onRemove() {
     this.remove.emit();
+  }
+
+  onView(pdf: any) {
+    if (this.file) {
+      if (this.file.includes('.pdf')) {
+        // document.location.
+        pdf.click();
+        // document.open(this.file, '_blank');
+      } else {
+        this.fileService.showImage.next(this.file);
+      }
+    }
   }
 }

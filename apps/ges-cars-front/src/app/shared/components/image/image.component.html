@@ -2,7 +2,7 @@
     <span class="material-icons close-icon" (click)="onRemove()" *ngIf="showRemove">
         cancel
     </span>
-    <div class="fileinput-new thumbnail fileinput-preview">
+    <div class="fileinput-new thumbnail fileinput-preview" (click)="onView(pdf)">
         <img [src]="file ? file : avatar" alt="...">
     </div>
     <div class="fileinput-actions" *ngIf="!viewMode">
@@ -13,5 +13,8 @@
         </span>
         <span class="btn btn-danger btn-round " *ngIf="file" (click)="onDelete()"><i class="fa fa-times"></i>
             Remove</span>
+        <span class="btn btn-success btn-round " *ngIf="file" (click)="onView(pdf)"><i class="fa fa-eye"></i>
+            Afficher</span>
     </div>
 </div>
+<a [href]="file" class="d-none" target="_blank" #pdf></a>
