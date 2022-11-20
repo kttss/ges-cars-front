@@ -1,9 +1,11 @@
 <ges-cars-container>
     <div class="row ">
         <div class="col-md-12 " style="max-width:822px;margin-bottom: 15px;">
+            <button mat-raised-button type="submit" class="btn btn-primary pull-right"
+                (click)="print()">Imprimer</button>
             <button mat-raised-button type="submit" class="btn btn-info pull-right"
                 (click)="download()">Telecharger</button>
-            <div class="btn btn-link pull-right" routerLink="/reservation/detail/1">Retour</div>
+            <div class="btn btn-link pull-right" routerLink="/reservation/list">Retour</div>
 
         </div>
 
@@ -355,8 +357,8 @@
                             <span>Heure</span>
                             <span>الساعة</span>
                         </div>
-                        <div class="f-1 b-r"></div>
-                        <div class="f-1"></div>
+                        <div class="text-center f-1 b-r">{{data.start_at | date:'HH:mm'}}</div>
+                        <div class="text-center f-1">{{data.end_at | date:'HH:mm'}}</div>
                     </div>
 
                     <div class="d-f">
@@ -373,8 +375,8 @@
                             <span>Lieu</span>
                             <span>المكان</span>
                         </div>
-                        <div class="f-1 b-r"></div>
-                        <div class="f-1"></div>
+                        <div class="text-center f-1 b-r">{{data.start_place}}</div>
+                        <div class="text-center f-1">{{data.end_place}}</div>
                     </div>
 
                 </div>

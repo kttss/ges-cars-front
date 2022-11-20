@@ -22,6 +22,8 @@ export class ReservationFormComponent implements OnInit {
     paiement: new FormControl('', [Validators.required]),
     satrtAt: new FormControl('', [Validators.required]),
     endAt: new FormControl('', [Validators.required]),
+    startPlace: new FormControl('', [Validators.required]),
+    endPlace: new FormControl('', [Validators.required]),
     // creatAt: new FormControl('', [Validators.required]),
     // backAt: new FormControl('', [Validators.required]),
     statut: new FormControl('', [Validators.required]),
@@ -101,7 +103,7 @@ export class ReservationFormComponent implements OnInit {
       this.carList = res.map((r: any) => {
         return {
           value: r.id,
-          viewValue: r.marque + ' ' + r.model,
+          viewValue: r.matricule + ' ' + r.marque + ' ' + r.model,
         };
       });
     });
@@ -129,6 +131,8 @@ export class ReservationFormComponent implements OnInit {
         paiement: res.paiement,
         satrtAt: res.satrtAt,
         endAt: res.endAt,
+        startPlace: res.startPlace,
+        endPlace: res.endPlace,
         // creatAt: res.creatAt,
         // backAt: res.backAt,
         statut: res.statut,

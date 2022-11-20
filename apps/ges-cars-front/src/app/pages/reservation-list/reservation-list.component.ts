@@ -15,17 +15,18 @@ import { CurrentRole } from '../../shared/utils/user';
 export class ReservationListComponent implements OnInit {
   data: IDataSource = {
     mode: {
-      edit: true,
+      edit: false,
       delete: CurrentRole() === RoleEnum.Admin,
       detail: true,
     },
     columns: [
       { key: 'id', title: '#' },
       { key: 'client', title: 'Client' },
+      { key: 'car', title: 'Voiture' },
       { key: 'satrtAt', title: 'Date debut' },
-      { key: 'endAt', title: 'Date fIn' },
-      { key: 'creatAt', title: 'Date creation' },
-      { key: 'backAt', title: 'Date retour' },
+      { key: 'endAt', title: 'Date fin' },
+      // { key: 'creatAt', title: 'Date creation' },
+      // { key: 'backAt', title: 'Date retour' },
       { key: 'paiement', title: 'Mode Paiement' },
       { key: 'price', title: 'prix' },
       { key: 'statut', title: 'statut' },
@@ -43,18 +44,27 @@ export class ReservationListComponent implements OnInit {
       this.data.rows = res.map((item: any) => {
         return {
           ...item,
-          satrtAt: moment(item.satrtAt).format('DD/MM/YYYY'),
-          endAt: moment(item.endAt).format('DD/MM/YYYY'),
+          satrtAt: moment(item.satrtAt).format('DD/MM/YYYY hh:mm'),
+          endAt: moment(item.endAt).format('DD/MM/YYYY hh:mm'),
           creatAt: moment(item.creatAt).format('DD/MM/YYYY'),
           backAt: moment(item.backAt).format('DD/MM/YYYY'),
           client: item.client.lastname + ' ' + item.client.firstname,
+          car:
+            item && item.car
+              ? item.car.matricule +
+                ' ' +
+                item.car.marque +
+                ' ' +
+                item.car.model
+              : '',
         };
       });
     });
   }
 
   openDetail(reservation: any) {
-    this.router.navigate(['/reservation/detail/' + reservation.id]);
+    // this.router.navigate(['/reservation/detail/' + reservation.id]);
+    this.router.navigate(['/reservation/detail/' + reservation.id + '/pdf']);
   }
 
   openEdit(reservation: any) {

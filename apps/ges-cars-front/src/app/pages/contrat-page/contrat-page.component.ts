@@ -99,4 +99,32 @@ export class ContratPageComponent implements OnInit {
       });
     }
   }
+
+  print() {
+    const c = document.getElementById('contrat');
+    if (c) {
+      html2canvas(c, { scale: 5 }).then((canvas) => {
+        const pdf = new jsPDF({ format: 'a4' });
+
+        const imgData = canvas.toDataURL('image/jpeg', 1.0);
+        pdf.internal.scaleFactor = 0.9;
+        pdf.addImage(imgData, 'JPEG', 5, 5, 200, 285);
+
+        const blob = pdf.output('blob');
+        const blobURL = URL.createObjectURL(blob);
+
+        const iframe = document.createElement('iframe');
+        document.body.appendChild(iframe);
+
+        iframe.style.display = 'none';
+        iframe.src = blobURL;
+        iframe.onload = function () {
+          setTimeout(function () {
+            iframe.focus();
+            iframe.contentWindow?.print();
+          }, 1);
+        };
+      });
+    }
+  }
 }

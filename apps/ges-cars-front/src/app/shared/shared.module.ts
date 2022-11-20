@@ -25,6 +25,12 @@ import { ImageComponent } from './components/image/image.component';
 import { DatepickerFieldComponent } from './components/form/datepicker-field/datepicker-field.component';
 import { AccessControlDirective } from './directive/access-control.directive';
 
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
+
 @NgModule({
   declarations: [
     TableComponent,
@@ -52,6 +58,9 @@ import { AccessControlDirective } from './directive/access-control.directive';
     TagInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
   ],
   exports: [
     MatButtonModule,
@@ -75,6 +84,9 @@ import { AccessControlDirective } from './directive/access-control.directive';
     MatNativeDateModule,
     DatepickerFieldComponent,
     AccessControlDirective,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })

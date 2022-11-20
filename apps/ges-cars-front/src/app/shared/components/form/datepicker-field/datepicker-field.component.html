@@ -1,8 +1,26 @@
-<mat-form-field>
-    <input matInput [matDatepicker]="picker2" [formControl]="control" [placeholder]="label" (click)="picker2.open()">
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2 startView="year"></mat-datepicker>
-</mat-form-field>
+<ng-container *ngIf="type==='date'">
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker2" [formControl]="control" [placeholder]="label"
+            (click)="picker2.open()">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 startView="year"></mat-datepicker>
+    </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="type==='datetime'">
+    <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker" [placeholder]="label" [formControl]="control"
+            (click)="picker.open()">
+        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker [showSeconds]="false" [hideTime]="false">
+            <!-- Custom icon or text of Apply icon -->
+            <ng-template>
+                <span>OK</span>
+            </ng-template>
+        </ngx-mat-datetime-picker>
+    </mat-form-field>
+</ng-container>
+
 <div class="error__container" *ngIf="control && control.touched && control.dirty && control.errors">
     <mat-error>
         {{getMessage()}}
