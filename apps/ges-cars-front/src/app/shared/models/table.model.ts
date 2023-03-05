@@ -16,4 +16,5 @@ declare interface IColumns {
   key: string;
   title: string;
   width?: number;
+  type?:'string' | 'date';
 }

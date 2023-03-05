@@ -1,4 +1,5 @@
 <ges-cars-container>
+    <ges-cars-edit-reservation></ges-cars-edit-reservation>
     <div class="row ">
         <div class="col-md-12 " style="max-width:822px;margin-bottom: 15px;">
             <button mat-raised-button type="submit" class="btn btn-primary pull-right"
@@ -11,7 +12,7 @@
 
     </div>
 
-    <div id="contrat">
+    <div id="contrat" *ngIf="data">
         <style>
             #contrat * {
                 /* font-family: Georgia, 'Times New Roman', Times, serif; */
@@ -224,19 +225,20 @@
                 <div class="b-b">
                     <div class="d-f">
                         <div class="val">Autre Conducteur Agrée :</div>
-                        <div class="text-center f-1"> </div>
+                        <div class="text-center f-1"> {{data?.chauffeur?.firstname}} {{data?.chauffeur?.lastname}}</div>
                         <div class="text-right val">: السائق المعتمد الثانی</div>
                     </div>
 
                     <div class="d-f">
                         <div class="val">Date et Lieu de Naissance :</div>
-                        <div class="text-center f-1"></div>
+                        <div class="text-center f-1">{{data?.chauffeur?.birthday | date:'dd/MM/YYYY'}} à
+                            {{data?.chauffeur?.lieuNaissance}}</div>
                         <div class="text-right val">:تاريخ ومكان الازدياد</div>
                     </div>
 
                     <div class="d-f">
                         <div class="val">Permis de Conduire N° :</div>
-                        <div class="text-center f-1"></div>
+                        <div class="text-center f-1">{{data?.chauffeur?.permis}}</div>
                         <div class="text-right val">:رخصة رقم</div>
                     </div>
                 </div>
@@ -246,7 +248,7 @@
                         <div class="val">Observations et Réserve :</div>
                         <div class="text-right val">:ملاحظات</div>
                     </div>
-                    <div class="text-center val" style="min-height: 50px;"></div>
+                    <div class="text-center val" style="min-height: 50px;"> {{data.observation}}</div>
 
 
                 </div>
@@ -457,7 +459,7 @@
                         </div>
 
                         <div class="f-1 text-center">
-                            {{(data.days * data.price * 20) /100}}
+                            <!--{{(data.days * data.price * 20) /100}}-->
                         </div>
                         <div class="text-right val">
                             القيمة المضافة
@@ -468,7 +470,7 @@
                             Total T.T.C:
                         </div>
                         <div class="f-1 text-center">
-                            {{(data.days * data.price)+data.days * ((data.price * 20) /100) }}
+                            <!--                            {{(data.days * data.price)+data.days * ((data.price * 20) /100) }}-->
                         </div>
                         <div class="text-right val">
                             المجموع بالقيمة المضافة

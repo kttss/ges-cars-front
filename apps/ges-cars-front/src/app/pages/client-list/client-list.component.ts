@@ -54,7 +54,7 @@ export class ClientListComponent implements OnInit {
       { key: 'id', title: '#' },
       { key: 'lastname', title: 'Nom' },
       { key: 'firstname', title: 'Prenom' },
-      { key: 'birthday', title: 'Date naissance' },
+      { key: 'birthday', title: 'Date naissance',type:"date" },
       { key: 'lieuNaissance', title: 'Lieu naissance' },
       { key: 'adresse', title: 'Adresse' },
       { key: 'telephone', title: 'Telephone' },

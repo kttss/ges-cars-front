@@ -1,0 +1,55 @@
+<!-- <ges-cars-container> -->
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-7">
+            <ges-cars-card [title]="'Edit Reservation'" icon="drive_eta" classes="col-md-12">
+
+                <form [formGroup]="reservationForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ges-cars-datepicker-field label="Date Fin" [control]="form['endAt']" type="datetime">
+                            </ges-cars-datepicker-field>
+                        </div>
+
+                        <div class="col-md-12">
+                            <ges-cars-select-field label="Statut" [control]="form['statut']"
+                                [options]="resrvationStatutList">
+                            </ges-cars-select-field>
+                        </div>
+                    </div>
+
+                    <button mat-raised-button type="submit" class="btn btn-info pull-right" (click)="onSubmit()"
+                        *ngIf="reservation && reservation.statut !=='Cloture'">Modifier</button>
+
+                </form>
+            </ges-cars-card>
+        </div>
+        <div class="col-md-5">
+
+            <ges-cars-card [title]="'Uploader Contrat '" icon="content_paste" classes="col-md-12">
+                <div class="row">
+                    <div class="col-md-12" *ngIf="reservation && !reservation.file">
+
+                        <label for="file" class="btn btn-link"
+                            style="word-break: break-word;">{{reservationForm.value.file ? 'contrat :
+                            '+ reservationForm.value.file
+                            : 'Choisissez le contrat'}}</label>
+                        <input type="file" accept=".pdf" id="file" style="display:none" (change)="change($event)">
+
+                        <hr />
+                        <button mat-raised-button type="button" class="btn btn-info pull-right" (click)="uploadFile()"
+                            [disabled]="!reservationForm.value.file">Uploader</button>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="reservation && reservation.file">
+                        <a target="_blank" href="{{fileService.getUrl(reservation.file)}}"
+                            class="btn btn-info">Affichier le Contrat
+                            signé</a>
+                    </div>
+                </div>
+            </ges-cars-card>
+        </div>
+    </div>
+</div>
+
+<hr />

@@ -30,6 +30,7 @@ import {
   NgxMatNativeDateModule,
   NgxMatTimepickerModule,
 } from '@angular-material-components/datetime-picker';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {
     ImageComponent,
     DatepickerFieldComponent,
     AccessControlDirective,
+    SortByPipe
   ],
   imports: [
     CommonModule,

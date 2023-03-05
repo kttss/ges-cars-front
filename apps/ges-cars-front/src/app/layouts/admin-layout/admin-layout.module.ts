@@ -24,6 +24,7 @@ import { ReservationListComponent } from '../../pages/reservation-list/reservati
 import { ReservationFormComponent } from '../../pages/reservation-form/reservation-form.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ContratPageComponent } from '../../pages/contrat-page/contrat-page.component';
+import { EditReservationComponent } from '../../pages/edit-reservation/edit-reservation.component';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { ContratPageComponent } from '../../pages/contrat-page/contrat-page.comp
     AdminFormComponent,
     ReservationListComponent,
     ReservationFormComponent,
+    EditReservationComponent,
     ContratPageComponent,
   ],
 })

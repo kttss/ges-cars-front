@@ -15,7 +15,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <ges-cars-select-field label="Voiture" [control]="form['car']" [options]="carList">
+                    <ges-cars-select-field label="Voiture" [control]="form['car']" [options]="getCars">
                     </ges-cars-select-field>
                 </div>
                 <div class="col-md-6">
@@ -70,6 +70,13 @@
                 <div class="col-md-6">
                     <ges-cars-select-field label="Chauffeur" [control]="form['chauffeur']" [options]="clientList">
                     </ges-cars-select-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea matInput placeholder="Observations"
+                        (change)="change($event)">{{reservationForm?.get('reservation')?.value}}</textarea>
                 </div>
             </div>
 

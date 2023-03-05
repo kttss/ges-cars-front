@@ -3,6 +3,12 @@ import { SearchService } from '../../../services/search.service';
 
 import { IDataSource } from '../../models/table.model';
 
+export interface IOrder {
+  column:string;
+  order: "ASC" | "DESC";
+  type: 'string' | 'date'
+
+}
 @Component({
   selector: 'ges-cars-table',
   templateUrl: './table.component.html',
@@ -14,6 +20,13 @@ export class TableComponent implements OnInit {
   @Output() viewDetail = new EventEmitter();
   @Output() oncreate = new EventEmitter();
   @Input() dataSource: IDataSource | undefined;
+
+  order:IOrder ={
+    column: 'creatAt',
+    type:"date",
+    order: 'DESC'
+  }
+
 
   search = '';
 
@@ -54,5 +67,16 @@ export class TableComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleCreate(row: any) {
     this.oncreate.emit(row);
+  }
+
+  sort(column:string, type:any):void {
+    this.order.column = column;
+    this.order.type  = type && type=== "date" ? 'date': 'string';
+    if(this.order.column ===column){
+      this.order.order = this.order.order === 'ASC' ? 'DESC' : 'ASC';
+    }else{
+      this.order.column =column;
+      this.order.order ="ASC";
+    }
   }
 }
