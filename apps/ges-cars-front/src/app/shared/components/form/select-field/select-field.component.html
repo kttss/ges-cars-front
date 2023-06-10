@@ -1,15 +1,26 @@
-<mat-form-field *ngIf="control">
+<mat-form-field *ngIf="control && !search">
     <mat-select multiple [placeholder]="label" [formControl]="control" *ngIf="multiple">
-        <mat-option *ngFor="let option of options" [value]="option.value">
+        <mat-option *ngFor="let option of optionsData" [value]="option.value">
             {{ option.viewValue }}
         </mat-option>
     </mat-select>
 
     <mat-select [placeholder]="label" [formControl]="control" *ngIf="!multiple">
-        <mat-option *ngFor="let option of options" [value]="option.value">
+        <mat-option *ngFor="let option of optionsData" [value]="option.value">
             {{ option.viewValue }}
         </mat-option>
     </mat-select>
+</mat-form-field>
+
+<mat-form-field class="example-full-width" [class.error]="control.invalid && control.touched" *ngIf="search">
+    <mat-label>{{label}}</mat-label>
+
+    <input type="text" placeholder="{{label}}" matInput [formControl]="controlSearch" [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filtredData" [value]="option.value" (click)="selectOption(option)">
+            {{option.viewValue}}
+        </mat-option>
+    </mat-autocomplete>
 </mat-form-field>
 
 <div class="error__container" *ngIf="control && control.touched && control.dirty && control.errors">

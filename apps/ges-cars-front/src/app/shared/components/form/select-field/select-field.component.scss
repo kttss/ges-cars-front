@@ -15,4 +15,8 @@
     height: 12px !important;
     margin: 0;
   }
+
+  .error .mat-form-field-underline {
+    background-color: #f44336;
+  }
 }

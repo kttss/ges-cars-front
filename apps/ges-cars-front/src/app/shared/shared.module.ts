@@ -31,7 +31,7 @@ import {
   NgxMatTimepickerModule,
 } from '@angular-material-components/datetime-picker';
 import { SortByPipe } from './pipes/sort-by.pipe';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     TableComponent,
@@ -44,7 +44,7 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     ImageComponent,
     DatepickerFieldComponent,
     AccessControlDirective,
-    SortByPipe
+    SortByPipe,
   ],
   imports: [
     CommonModule,
@@ -63,6 +63,7 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
+    MatAutocompleteModule,
   ],
   exports: [
     MatButtonModule,
@@ -89,6 +90,7 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
+    MatAutocompleteModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })

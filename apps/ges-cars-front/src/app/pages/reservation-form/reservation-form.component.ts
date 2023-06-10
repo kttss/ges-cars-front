@@ -29,12 +29,12 @@ export class ReservationFormComponent implements OnInit {
     statut: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     chauffeur: new FormControl(null, []),
-    observation: new FormControl('')
+    observation: new FormControl(''),
   });
 
   clientList = [];
   agenceList = [];
-  carList:any[] = [];
+  carList: any[] = [];
 
   resrvationStatutList = [
     {
@@ -88,7 +88,9 @@ export class ReservationFormComponent implements OnInit {
       });
     });
     this.route.queryParams.subscribe((res: any) => {
-      this.reservationForm.patchValue({ client: Number(res.client) });
+      this.reservationForm.patchValue({
+        client: res.client ? Number(res.client) : '',
+      });
     });
 
     this.agenceService.getAll().subscribe((res: any) => {
@@ -105,7 +107,7 @@ export class ReservationFormComponent implements OnInit {
         return {
           value: r.id,
           viewValue: r.matricule + ' ' + r.marque + ' ' + r.model,
-          agence: r?.agence?.id
+          agence: r?.agence?.id,
         };
       });
     });
@@ -161,8 +163,10 @@ export class ReservationFormComponent implements OnInit {
     }
   }
 
-  get getCars(){
-    return this.carList.filter(c=>c && c.agence === this.reservationForm.value.agence);
+  get getCars() {
+    return this.carList.filter(
+      (c) => c && c.agence === this.reservationForm.value.agence
+    );
   }
 
   handleAdd() {
@@ -215,7 +219,7 @@ export class ReservationFormComponent implements OnInit {
     ]);
   }
 
-  change(event:any): void{
+  change(event: any): void {
     console.log(event);
     this.reservationForm?.get('observation')?.setValue(event.target.value);
   }

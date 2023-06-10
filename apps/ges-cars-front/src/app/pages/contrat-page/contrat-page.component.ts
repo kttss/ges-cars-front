@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ContratPageComponent implements OnInit {
   image = '';
   data: any;
+  conditionImg: any;
   constructor(
     private http: HttpClient,
     private contartService: ReservationService,
@@ -28,6 +29,13 @@ export class ContratPageComponent implements OnInit {
       const id = Number(url[1].path);
       this.loadData(id);
     });
+
+    const condition = document.getElementById('conditionsGenerales');
+    if (condition) {
+      html2canvas(condition, { scale: 5 }).then((canvas) => {
+        this.conditionImg = canvas.toDataURL('image/jpeg', 1.0);
+      });
+    }
   }
 
   loadData(id: any) {
@@ -94,6 +102,10 @@ export class ContratPageComponent implements OnInit {
         const imgData = canvas.toDataURL('image/jpeg', 1.0);
         pdf.internal.scaleFactor = 0.9;
         pdf.addImage(imgData, 'JPEG', 5, 5, 200, 285);
+        if (this.conditionImg) {
+          pdf.addPage();
+          pdf.addImage(this.conditionImg, 'JPEG', 5, 5, 200, 0);
+        }
 
         pdf.save('contrat.pdf');
       });
@@ -109,6 +121,10 @@ export class ContratPageComponent implements OnInit {
         const imgData = canvas.toDataURL('image/jpeg', 1.0);
         pdf.internal.scaleFactor = 0.9;
         pdf.addImage(imgData, 'JPEG', 5, 5, 200, 285);
+        if (this.conditionImg) {
+          pdf.addPage();
+          pdf.addImage(this.conditionImg, 'JPEG', 5, 5, 200, 0);
+        }
 
         const blob = pdf.output('blob');
         const blobURL = URL.createObjectURL(blob);

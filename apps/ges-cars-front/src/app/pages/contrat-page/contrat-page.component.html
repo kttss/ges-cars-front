@@ -12,107 +12,145 @@
 
     </div>
 
+    <style>
+        #contrat * {
+            /* font-family: Georgia, 'Times New Roman', Times, serif; */
+            font-size: 14px;
+            color: black;
+            font-family: sans-serif;
+            /* font-weight: 500; */
+        }
+
+        #contrat,
+        #conditionsGenerales {
+            padding: 10px;
+            width: 792px;
+            /* width: 447px; */
+            background-color: white;
+        }
+
+        .b-t {
+            border-top: 1px solid black;
+        }
+
+        .b-b {
+            border-bottom: 1px solid black;
+        }
+
+        .b-l {
+            border-left: 1px solid black;
+        }
+
+        .b-r {
+            border-right: 1px solid black;
+        }
+
+        .table {
+            /* border: 1px solid black; */
+            width: 100%;
+            margin-bottom: 20px;
+            border: 0;
+        }
+
+        .table td,
+        .table tr {
+            /* border: 1px solid black; */
+            padding: 0;
+            border: none;
+            border-width: 0;
+            border-color: white;
+        }
+
+        .table-content {
+            width: 100%;
+            border-bottom: 1px solid black;
+        }
+
+        .table-content td,
+        .table-content tr {
+            border: 0;
+            padding: 0;
+            border: none;
+
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .table-border {
+            width: calc(100% - 20px);
+            margin: 0 10px;
+            display: flex;
+            height: 20px;
+            border: 1px solid black;
+        }
+
+        .table-border div {
+            flex: 1;
+            height: 100%;
+        }
+
+
+        .d-f {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .f-1 {
+            flex: 1;
+        }
+
+        .val {
+            padding: 0px 5px;
+        }
+
+        .w-80 {
+            width: 85px;
+        }
+
+        #conditionsGenerales {
+            color: black;
+        }
+
+        .condition__title {
+            font-size: 20px;
+            font-weight: 700;
+            border: 2px solid;
+            padding: 2px 20px;
+            border-radius: 25px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            max-width: fit-content;
+        }
+
+        .condition__p {
+            font-size: 12px;
+            margin: 0;
+            line-height: 18px;
+
+        }
+
+        .condition__p strong {
+            font-weight: bold;
+            margin: 0;
+        }
+
+
+        .condition__subtitle {
+            font-size: 15px;
+            font-family: serif;
+            padding: 10px 0;
+            margin: 0;
+        }
+    </style>
     <div id="contrat" *ngIf="data">
-        <style>
-            #contrat * {
-                /* font-family: Georgia, 'Times New Roman', Times, serif; */
-                font-size: 14px;
-                color: black;
-                font-family: sans-serif;
-                /* font-weight: 500; */
-            }
 
-            #contrat {
-                padding: 10px;
-                width: 792px;
-                /* width: 447px; */
-                background-color: white;
-            }
-
-            .b-t {
-                border-top: 1px solid black;
-            }
-
-            .b-b {
-                border-bottom: 1px solid black;
-            }
-
-            .b-l {
-                border-left: 1px solid black;
-            }
-
-            .b-r {
-                border-right: 1px solid black;
-            }
-
-            .table {
-                /* border: 1px solid black; */
-                width: 100%;
-                margin-bottom: 20px;
-                border: 0;
-            }
-
-            .table td,
-            .table tr {
-                /* border: 1px solid black; */
-                padding: 0;
-                border: none;
-                border-width: 0;
-                border-color: white;
-            }
-
-            .table-content {
-                width: 100%;
-                border-bottom: 1px solid black;
-            }
-
-            .table-content td,
-            .table-content tr {
-                border: 0;
-                padding: 0;
-                border: none;
-
-            }
-
-            .text-right {
-                text-align: right;
-            }
-
-            .text-center {
-                text-align: center;
-            }
-
-            .table-border {
-                width: calc(100% - 20px);
-                margin: 0 10px;
-                display: flex;
-                height: 20px;
-                border: 1px solid black;
-            }
-
-            .table-border div {
-                flex: 1;
-                height: 100%;
-            }
-
-
-            .d-f {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .f-1 {
-                flex: 1;
-            }
-
-            .val {
-                padding: 0px 5px;
-            }
-
-            .w-80 {
-                width: 85px;
-            }
-        </style>
 
         <div class="d-f" style="margin-bottom: 20px;position: relative;">
             <div class="b-t b-b b-l " style="padding: 10px;min-width: 170px;">
@@ -596,7 +634,7 @@
                         <div></div>
 
                         <div class="text-right">
-                            :الرجوع قبل الوقت المحدد بتاريخ
+                            :الرجوع النهائي بتاريخ
                         </div>
                     </div>
                     <div class="d-f">
@@ -622,5 +660,208 @@
 
 
 
+    </div>
+
+    <div id="conditionsGenerales">
+        <section>
+            <h2 class="condition__title">CONDITIONS GENERALES DE LOCATION</h2>
+            <p class="condition__p" style="padding: 15px 0 25px;">
+                Le present contrat a été etabli et prend date comme indiqué au verso. il engage <strong>LIMITLESS RENT
+                    CAR s.a.r.l.</strong> qui sera appelé le loueur
+                et la personne Socièté ou Compagnie par qui est signé ce contrat, qui sera dénommée " le locataire"
+            </p>
+            <table>
+                <tr>
+                    <td width="50%" style="vertical-align:top">
+                        <article>
+                            <h3 class="condition__subtitle" style="padding-top:0;">Art. 1- UTILISATION DE
+                                LA VOITURE-</h3>
+                            <p class="condition__p">
+                                Le locataire sengage à ne pas laisser conduire la voitute par dautres personnes que lui
+                                même ou celles agréées par le loueur et dont il se porte garant, et à réutiliser le
+                                véhicule que pour ses besoins personnels.
+
+                                il est interdit de participer à toute compétition, quelle que soit, et d'uti-iser le
+                                véhicule des fins illicites ou des transports de marchandises. Le
+                                locataire s'engage à ne pas solliciter directement des documents doua-niers- ll est
+                                interdit au locataire de sucharger le véhicule loué en trans-portant un nombre de
+                                passagers supéricur à celui porté sur le contrat,
+                                sous peie dêtre déchu de l'Assurances.
+
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 2- ETAT DE LA VOITURE-</h3>
+                            <p class="condition__p">
+                                La voiture est livrée en parfait état de marche et de propreté. Les comp-
+                                teurs et leurs prises sont plombées, et les plombs ne pourront être enle-
+                                vés ou volés sous peine de devoir payer la location sur la base de 500
+                                Kilométres par jour. La voiture sera rendue dans la même état de pro-
+                                preté; a défaut le locataire devra acquitter le montant de ces nettoyage
+                                et remises en état les 5
+                                pneus sont en bon état sans coupures, l'usure et
+                                normale. en cas de détérioration et de l'un d'eux pour une cause autre
+                                que l'usure normale. Le locataire s'engage à le remplacer immédiatement
+                                par un pneu neuf de mêmes dimensions ou d'en payer le montant.
+
+
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 3- ESSENCE ET HUILE-</h3>
+                            <p class="condition__p">
+                                L'essence est à la charge du client. Le locataire doit vérifier en perma-
+                                nence les niveaux d'huile et d'eau, et vérifier les niveaux de la boîte de
+                                vitesse et du pont arrière tous les 1.000 Kilométre. Il justifiera de ces tra-
+                                vaux par les factures correspondantes (qui lui seront rembourses) sous
+                                peine d'avoir à payer une indemnité pour usure anormale.
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 4- ENTRETIEN ET REPARATION-</h3>
+                            <p class="condition__p">
+                                L'usure mécanique normale est à la charge du loueur. Toutes les répara-
+
+                                tions provenants, soit d'une usure anormale, soit d'une négligenee de la
+                                part du locataire ou d'une cause accindentelle, seront à sa charge ct exé-
+                                cutées par nos soins. Dans le cas ou le véhicule scrait immobilise en
+
+                                dehors de la région, les réparations qu'elles soient dues à T'usure nor-
+                                male ou à une cause accidentelle, ne scront exécitées qu'aprés accord
+
+                                télégraphique du loueur ou par L'Agent régional de la marque de véhi-
+
+                                cule. Elles devront faire l'objet d'une facture acquittée et très détaillée.
+                                Les pièces défectueuses remplacées devront être présentées avee la fac-
+                                ture acquittée, En aucun cas et n'a aucune circonstance, le locataire ne
+
+                                pourra réclamer des dommages et intérêts, soit pour le retard de la
+                                remise de la voiture, ou annulation de la location. soit pour immobilisa-
+                                tion dans le cas de réparations nécessitées par l'usure normale et effec-
+
+
+                                tuées au cours de la location. la responsabilité du loueur ne pourra
+                                jamais être invoquée, même en cas d'accidents de personnes ou de cho-
+
+                                ses ayant pu résulter de vices ou de défauts de construction ou de répa-
+                                rations antérieures.
+                            </p>
+                        </article>
+
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 5- ASSURANCE-</h3>
+                            <p class="condition__p">
+                                Le locataire est garanti pour les risques suivants : En cas d'accidents
+                                fortuit ou fotif le Locataire est centièrement responsable des dommages
+                                causés au véhicule en conséquence. il est tenu de nous régler le montant
+                            </p>
+                        </article>
+
+                    </td>
+                    <td width="50%" style="vertical-align:top">
+                        <article>
+
+                            <p class="condition__p">
+                                total des réparations
+                                Le locataire est le seul conducteur du véhicule et s'engage à ne pas
+                                céder à autrui à moins d'une stipulation sur le présent contrat,
+                                Les frais de rapatriement et d'immobilisation reste toujours à la charge
+
+                                du locataire, quelle que soit la formule d'assurance contractes. ASSU-
+
+
+                                RANCE-Assure tières illimitée vol et incendie est inclus dans te prix de
+                                location assure complémentaire de 35 Dh par jour en cas d'accident fau-
+                                tif 30% et fortuite 50% reste à la charge du client. Assure des personnes
+                                transportés peut être souscrite pour 15 Dh par jour.
+                                La voiture n'est assurée que pour la durée de location. Passé ce délai, le
+
+                                locataire décline toute résponsabilité pour les accidents que le locataire
+                                aurait pu causer et dont il devra faire son afaire personnelle.
+
+
+                                Enfin; il n'y a pas Assurance pour tout conducteur non muni d'un per-
+                                mis en état de validité ou d'une permis datant de moins de l'an. le loueur
+
+                                décline toutes responsabilité pour les accidents aux tiers ou dégat à la
+                                voiture que Je locataire pourrait causer pendant la période de laocation
+
+                                si le locataire a délibérement fourni au loueur des informations fausses
+
+                                concernant son identité, son adresse ou la validité de son permis de
+
+                                condruire.
+
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 6- LOCATION, CAUTION, PROLONGATION-</h3>
+                            <p class="condition__p">
+                                Les prix de la location, ainsi que la caution, sont payables d'avances. La
+                                caution ne pourra servir, en aucun cas au loueur, faire parvenir le mon-
+                                tant, de la location en cours, sous peine à une prolongation de
+                                locataire. A fin d'éviter toutes contestation et pour le cas ou le locateur
+                                voudrait concerver la voiture pour un temps supérieur à celui indiqué
+                                dans le contrat, il devra aprés avoir obtenu l'accord de s'exposer à des
+                                poursuites pour détourement de voiture ou abus de confiance.
+                                La journée de location compte de 0 heures a 24 heures et toute joumnées
+                                commancées est due en entier.
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 7- RAPATRIEMENT DE LA VOITURE-</h3>
+                            <p class="condition__p">
+                                Le locataire s'interdit formellement d'abondonner le véhicule. En cas
+                                d'impossibilité matérielle. celle-ci sera rapatriée aux frais et par les soins
+                                du locataire, la location restant due jusqu'à retour du véhicule.
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 8 - PAPIER DE LA VOITURE-</h3>
+                            <p class="condition__p">
+                                Le locataire remettra dès la fin de la location à la rentrée de la voiture
+
+                                la carte grise et tous les papiers nécessaires à sa circulation, faute de quoi,
+
+                                ces pièces étant indisponsables à de nouvelles locations, la location
+                                continuera a être facturée aux prix initial jusqu'à leur remise à la
+
+                                société. En cas de perte de ces papiers le locataire devra acqueitter les
+
+                                montant des frais de duplicata. ainsi que l'immobilisation.
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 9- RESPONSABILITE-</h3>
+                            <p class="condition__p">
+                                Le locataire demeure le seule responsable des amendes, contraventions et
+                                procés-verbaux établis contre lui.
+                            </p>
+                        </article>
+
+                        <article>
+                            <h3 class="condition__subtitle">Art. 10- COMPETENCE-</h3>
+                            <p class="condition__p">
+                                De convention expresse et en cas de contestation quelconque, le tribu-
+                                nal de Tanger sera seul compétant, les frais de timbres et d'enregistre-
+                                ment restant à la charge du locataire
+                            </p>
+                        </article>
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </section>
     </div>
 </ges-cars-container>
