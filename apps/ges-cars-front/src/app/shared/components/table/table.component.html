@@ -1,12 +1,17 @@
 <div class="table-responsive">
+
+    <mat-paginator *ngIf="paginate" [length]="paginate.total" [pageIndex]="paginate.page" [pageSize]="paginate.count"
+        [pageSizeOptions]="[10, 25,50, 100]" (page)="changePaginate($event)" aria-label="Select page">
+    </mat-paginator>
     <table class="table">
         <thead *ngIf="dataSource &&  dataSource.columns">
             <tr>
-                <th *ngFor="let col of dataSource.columns" [ngStyle]="{'width.px': col.width}" (click)="sort(col.key,col.type)">{{
+                <th *ngFor="let col of dataSource.columns" [ngStyle]="{'width.px': col.width}"
+                    (click)="paginate ? sortByAPI(col) : sort(col.key,col.type)">{{
                     col.title }}
-                  <ng-container *ngIf="col.key === order.column">
-                    <b  class="caret {{order.order === 'ASC' ? '' : 'up' }}"></b>
-                  </ng-container>
+                    <ng-container *ngIf="col.key === order.column">
+                        <b class="caret {{order.order === 'ASC' ? '' : 'up' }}"></b>
+                    </ng-container>
 
                 </th>
 
@@ -15,7 +20,7 @@
             </tr>
         </thead>
         <tbody *ngIf="dataSource && data">
-            <tr *ngFor="let row of data |sortBy: order">
+            <tr *ngFor="let row of data">
                 <td *ngFor="let col of dataSource.columns">{{row[col.key]}}</td>
 
 

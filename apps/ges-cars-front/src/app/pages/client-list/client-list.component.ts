@@ -7,6 +7,7 @@ import { ClientService } from '../../services/client.service';
 import { RoleEnum } from '../../shared/enums/role.enum';
 import { IDataSource } from '../../shared/models/table.model';
 import { CurrentRole } from '../../shared/utils/user';
+import { IPaginate } from '../../shared/components/table/table.component';
 
 declare let $: any;
 declare interface TableData {
@@ -51,19 +52,37 @@ export class ClientListComponent implements OnInit {
       create: true,
     },
     columns: [
-      { key: 'id', title: '#' },
-      { key: 'lastname', title: 'Nom' },
-      { key: 'firstname', title: 'Prenom' },
-      { key: 'birthday', title: 'Date naissance',type:"date" },
-      { key: 'lieuNaissance', title: 'Lieu naissance' },
-      { key: 'adresse', title: 'Adresse' },
-      { key: 'telephone', title: 'Telephone' },
-      { key: 'cin', title: 'CIN' },
-      { key: 'villeCin', title: 'Ville cin' },
-      { key: 'datePermis', title: 'Date permis' },
-      { key: 'villePermis', title: 'Ville permis' },
+      { key: 'id', title: '#', orderKey: 'id' },
+      { key: 'lastname', title: 'Nom', orderKey: 'lastname' },
+      { key: 'firstname', title: 'Prenom', orderKey: 'firstname' },
+      {
+        key: 'birthday',
+        title: 'Date naissance',
+        type: 'date',
+        orderKey: 'birthday',
+      },
+      {
+        key: 'lieuNaissance',
+        title: 'Lieu naissance',
+        orderKey: 'lieuNaissance',
+      },
+      { key: 'adresse', title: 'Adresse', orderKey: 'adresse' },
+      { key: 'telephone', title: 'Telephone', orderKey: 'telephone' },
+      { key: 'cin', title: 'CIN', orderKey: 'cin' },
+      { key: 'villeCin', title: 'Ville cin', orderKey: 'villeCin' },
+      { key: 'datePermis', title: 'Date permis', orderKey: 'datePermis' },
+      { key: 'villePermis', title: 'Ville permis', orderKey: 'villePermis' },
     ],
     rows: [],
+  };
+
+  paginate: IPaginate = {
+    page: 0,
+    count: 10,
+    search: '',
+    order: 'DESC',
+    orderBy: '',
+    total: 100,
   };
 
   constructor(
@@ -73,15 +92,26 @@ export class ClientListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clientService.getAll().subscribe((res: any) => {
-      this.data.rows = res.map((item: any) => {
-        return {
-          ...item,
-          datePermis: moment(item.datePermis).format('DD/MM/YYYY'),
-          birthday: moment(item.birthday).format('DD/MM/YYYY'),
-        };
+    this.onChangePaginate(this.paginate);
+  }
+
+  onChangePaginate(event: IPaginate) {
+    this.paginate = event;
+    const { page, count, orderBy, order, search } = this.paginate;
+    this.clientService
+      .getAllWithPaginate(page, count, search, orderBy, order)
+      .subscribe((res: any) => {
+        this.paginate.total = res.count;
+        this.paginate = { ...this.paginate, total: res.count };
+
+        this.data.rows = res.rows.map((item: any) => {
+          return {
+            ...item,
+            datePermis: moment(item.datePermis).format('DD/MM/YYYY'),
+            birthday: moment(item.birthday).format('DD/MM/YYYY'),
+          };
+        });
       });
-    });
   }
 
   openDetail(client: any) {

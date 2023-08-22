@@ -2,35 +2,56 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchService } from '../../../services/search.service';
 
 import { IDataSource } from '../../models/table.model';
+import { SortByPipe } from '../../pipes/sort-by.pipe';
 
 export interface IOrder {
-  column:string;
-  order: "ASC" | "DESC";
-  type: 'string' | 'date'
-
+  column: string;
+  order: 'ASC' | 'DESC';
+  type: 'string' | 'date';
 }
+
+export interface IPaginate {
+  page: number;
+  count: number;
+  orderBy: string;
+  order: 'ASC' | 'DESC';
+  search: string;
+  total: number;
+}
+
 @Component({
   selector: 'ges-cars-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  providers: [SortByPipe],
 })
 export class TableComponent implements OnInit {
   @Output() onedit = new EventEmitter();
+  @Output() onpaginate = new EventEmitter();
   @Output() ondelete = new EventEmitter();
   @Output() viewDetail = new EventEmitter();
   @Output() oncreate = new EventEmitter();
   @Input() dataSource: IDataSource | undefined;
 
-  order:IOrder ={
-    column: 'creatAt',
-    type:"date",
-    order: 'DESC'
-  }
+  @Input() paginate: IPaginate | null = null;
 
+  order: IOrder = {
+    column: 'creatAt',
+    type: 'date',
+    order: 'DESC',
+  };
 
   search = '';
 
   get data() {
+    if (this.paginate) {
+      return this.dataSource?.rows;
+    } else {
+      return this.sortPipe.transform(this.transformedData, this.order);
+    }
+  }
+
+  get transformedData(): any {
     return this.dataSource?.rows.filter((e) => {
       return (
         Object.keys(e).some((r: string) =>
@@ -40,12 +61,21 @@ export class TableComponent implements OnInit {
     });
   }
 
-  constructor(private searchService: SearchService) {}
+  constructor(
+    private searchService: SearchService,
+    private sortPipe: SortByPipe
+  ) {}
 
   ngOnInit(): void {
     this.searchService.onsearch.subscribe((text: any) => {
-      console.log(text);
       this.search = text;
+      if (this.paginate) {
+        this.onpaginate.emit({
+          ...this.paginate,
+          page: 0,
+          search: this.search,
+        });
+      }
     });
   }
 
@@ -69,14 +99,37 @@ export class TableComponent implements OnInit {
     this.oncreate.emit(row);
   }
 
-  sort(column:string, type:any):void {
+  sort(column: string, type: any): void {
     this.order.column = column;
-    this.order.type  = type && type=== "date" ? 'date': 'string';
-    if(this.order.column ===column){
+    this.order.type = type && type === 'date' ? 'date' : 'string';
+    if (this.order.column === column) {
       this.order.order = this.order.order === 'ASC' ? 'DESC' : 'ASC';
-    }else{
-      this.order.column =column;
-      this.order.order ="ASC";
+    } else {
+      this.order.column = column;
+      this.order.order = 'ASC';
     }
+  }
+
+  sortByAPI(col: any) {
+    this.order.column = col.key;
+    if (this.order.column === col.key) {
+      this.order.order = this.order.order === 'ASC' ? 'DESC' : 'ASC';
+    } else {
+      this.order.column = col.key;
+      this.order.order = 'ASC';
+    }
+    this.onpaginate.emit({
+      ...this.paginate,
+      orderBy: col.orderKey,
+      order: this.order.order,
+    });
+  }
+
+  changePaginate(event: any) {
+    this.onpaginate.emit({
+      ...this.paginate,
+      page: event.pageIndex,
+      count: event.pageSize,
+    });
   }
 }

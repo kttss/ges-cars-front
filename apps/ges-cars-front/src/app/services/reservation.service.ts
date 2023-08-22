@@ -20,6 +20,23 @@ export class ReservationService {
     return this.network.get('contrat');
   }
 
+  getAllWithPaginate(
+    page: number,
+    count: number,
+    search: string,
+    orderBy: string,
+    order: 'ASC' | 'DESC'
+  ) {
+    let root = `contrat/paginate?page=${page}&count=${count}&order=${order}`;
+    if (search) {
+      root = root + '&search=' + search;
+    }
+    if (orderBy) {
+      root = root + '&orderBy=' + orderBy;
+    }
+    return this.network.get(root);
+  }
+
   getById(id: number) {
     return this.network.get('contrat/' + id);
   }

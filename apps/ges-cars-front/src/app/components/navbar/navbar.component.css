@@ -5,3 +5,9 @@
 .dropdown-menu.dropdown-menu-right.show {
     visibility: visible;
 }
+
+.notif-section {
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}

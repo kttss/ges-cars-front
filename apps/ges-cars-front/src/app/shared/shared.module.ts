@@ -24,7 +24,7 @@ import { SelectFieldComponent } from './components/form/select-field/select-fiel
 import { ImageComponent } from './components/image/image.component';
 import { DatepickerFieldComponent } from './components/form/datepicker-field/datepicker-field.component';
 import { AccessControlDirective } from './directive/access-control.directive';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import {
   NgxMatDatetimePickerModule,
   NgxMatNativeDateModule,
@@ -64,6 +64,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
   ],
   exports: [
     MatButtonModule,
@@ -91,6 +92,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
