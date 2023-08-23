@@ -68,7 +68,14 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchService.onsearch.subscribe((text: any) => {
-      this.search = text;
+      if (/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(text)) {
+        this.search = text;
+        const [day, month, year] = text.split('/');
+        this.search = `${year}-${month}-${day}`;
+      } else {
+        this.search = text;
+      }
+
       if (this.paginate) {
         this.onpaginate.emit({
           ...this.paginate,
