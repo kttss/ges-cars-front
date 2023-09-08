@@ -68,6 +68,8 @@ export class ReservationFormComponent implements OnInit {
   mode: 'edit' | 'detail' | 'new' = 'new';
   reservation: any;
 
+  disabledDates = [];
+
   constructor(
     private clientService: ClientService,
     private agenceService: AgenceService,
@@ -78,7 +80,36 @@ export class ReservationFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  getDaysArray(start: any, end: any): any {
+    const arr: any = [];
+    for (
+      const cc = [], dt = new Date(start);
+      dt < new Date(end);
+      dt.setDate(dt.getDate() + 1)
+    ) {
+      arr.push(new Date(dt).getDate());
+    }
+    return arr;
+  }
+
   ngOnInit(): void {
+    this.reservationForm.get('car')?.valueChanges.subscribe((car) => {
+      this.reservationService.getreservedDates(car).subscribe((res: any) => {
+        this.disabledDates = [];
+        const data = res
+          .filter((e: any) => new Date(e.endAt) > new Date())
+          .map((r: any) => {
+            return { start: r.satrtAt, end: r.endAt };
+          });
+
+        data.forEach((cc: any) => {
+          this.disabledDates = this.disabledDates.concat(
+            this.getDaysArray(cc.start, cc.end)
+          );
+        });
+      });
+    });
+
     this.clientService.getAll().subscribe((res: any) => {
       this.clientList = res.map((r: any) => {
         return {

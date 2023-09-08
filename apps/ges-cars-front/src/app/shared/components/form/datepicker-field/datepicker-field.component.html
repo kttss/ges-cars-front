@@ -10,7 +10,7 @@
 <ng-container *ngIf="type==='datetime'">
     <mat-form-field>
         <input matInput [ngxMatDatetimePicker]="picker" [placeholder]="label" [formControl]="control"
-            (click)="picker.open()">
+            [ngxMatDatetimePickerFilter]="dateFilter" (click)="picker.open()">
         <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
         <ngx-mat-datetime-picker #picker [showSeconds]="false" [hideTime]="false">
             <!-- Custom icon or text of Apply icon -->

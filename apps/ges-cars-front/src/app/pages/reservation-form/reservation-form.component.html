@@ -36,11 +36,13 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <ges-cars-datepicker-field label="Date debut" [control]="form['satrtAt']" type="datetime">
-                    </ges-cars-datepicker-field>
+                    <ges-cars-datepicker-field label="Date debut" [control]="form['satrtAt']" type="datetime"
+                        [disabledDates]=disabledDates></ges-cars-datepicker-field>
+
                 </div>
                 <div class="col-md-6">
-                    <ges-cars-datepicker-field label="Date Fin" [control]="form['endAt']" type="datetime">
+                    <ges-cars-datepicker-field label="Date Fin" [control]="form['endAt']" type="datetime"
+                        [from]="form['satrtAt'].value">
                     </ges-cars-datepicker-field>
                 </div>
             </div>

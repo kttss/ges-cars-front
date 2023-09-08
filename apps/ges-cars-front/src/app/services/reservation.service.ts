@@ -41,6 +41,10 @@ export class ReservationService {
     return this.network.get('contrat/' + id);
   }
 
+  getreservedDates(id: number) {
+    return this.network.get('contrat/car/' + id);
+  }
+
   delete(id: number) {
     return this.network.delete('contrat/' + id);
   }

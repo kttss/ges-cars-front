@@ -8,7 +8,9 @@ import * as moment from 'moment';
 })
 export class DatepickerFieldComponent implements OnInit {
   @Input() label = '';
+  @Input() disabledDates: any[] = [];
   @Input() control: any;
+  @Input() from = null;
   @Input() type: 'date' | 'datetime' = 'date';
 
   getMessage() {
@@ -26,6 +28,18 @@ export class DatepickerFieldComponent implements OnInit {
       return 'champs est obligatoire';
     }
   }
+
+  dateFilter = (date: Date | null): boolean => {
+    if (date === null) {
+      return true;
+    } else {
+      if (this.from) {
+        return moment(date).diff(new Date(this.from), 'days') >= 0;
+      } else {
+        return this.disabledDates.indexOf(date.getDate()) == -1;
+      }
+    }
+  };
 
   ngOnInit(): void {
     this.control.valueChanges.subscribe((d: any) => {
