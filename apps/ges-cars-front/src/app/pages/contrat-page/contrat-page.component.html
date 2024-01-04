@@ -229,7 +229,7 @@
 
                     <div class="d-f">
                         <div class="val">Délivré le :</div>
-                        <div class="text-center f-1"> {{data.datePermis | date:'dd/MM/YYYY'}} à {{
+                        <div class="text-center f-1"> {{data.datePermis | date:'dd/MM/yyyy'}} à {{
                             data.ville_permis}}</div>
                         <div class="text-right val">: منحت في</div>
                     </div>
@@ -241,7 +241,7 @@
                         <div class="val">Date et Lieu de Naissance :</div>
                         <div class="text-right val">:تاريخ ومكان الازدياد</div>
                     </div>
-                    <div class="text-center val" style="min-height: 50px;">{{data.birthday | date:'dd/MM/YYYY'}} à
+                    <div class="text-center val" style="min-height: 50px;">{{data.birthday | date:'dd/MM/yyyy'}} à
                         {{data.birthdayPlace}}
                     </div>
                 </div>
@@ -269,7 +269,7 @@
 
                     <div class="d-f">
                         <div class="val">Date et Lieu de Naissance :</div>
-                        <div class="text-center f-1">{{data?.chauffeur?.birthday | date:'dd/MM/YYYY'}} à
+                        <div class="text-center f-1">{{data?.chauffeur?.birthday | date:'dd/MM/yyyy'}} à
                             {{data?.chauffeur?.lieuNaissance}}</div>
                         <div class="text-right val">:تاريخ ومكان الازدياد</div>
                     </div>
@@ -388,8 +388,8 @@
                             <span>Date</span>
                             <span>التاريخ</span>
                         </div>
-                        <div class="text-center f-1 b-r">{{data.start_at | date:'dd/MM/YYYY'}}</div>
-                        <div class="text-center f-1">{{ data.end_at | date:'dd/MM/YYYY'}}</div>
+                        <div class="text-center f-1 b-r">{{data.start_at | date:'dd/MM/yyyy'}}</div>
+                        <div class="text-center f-1">{{ data.end_at | date:'dd/MM/yyyy'}}</div>
                     </div>
 
                     <div class="d-f">

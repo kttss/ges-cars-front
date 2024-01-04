@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import * as moment from 'moment';
 import { ReservationService } from '../services/reservation.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +11,9 @@ import { ReservationService } from '../services/reservation.service';
 })
 export class DashboardComponent implements OnInit {
   data: any = {};
+  dateDebut = new FormControl();
+  dateFin = new FormControl();
+  cars: any[] = [];
   constructor(private reservationService: ReservationService) {}
   startAnimationForLineChart(chart: any) {
     let seq: any, delays: any, durations: any;
@@ -71,7 +76,48 @@ export class DashboardComponent implements OnInit {
     seq2 = 0;
   }
 
+  loadCars() {
+    this.reservationService
+      .getCarsWithcontrat(
+        this.dateDebut.value
+          ? moment(this.dateDebut.value).format('yyyy-MM-DD')
+          : '',
+        this.dateFin.value
+          ? moment(this.dateFin.value).format('yyyy-MM-DD')
+          : ''
+      )
+      .subscribe((res: any) => {
+        this.cars = res;
+      });
+  }
+  calculRevunu(contrat: any): number {
+    const f: any[] = contrat.map((e: any) => {
+      return {
+        days: moment(e.backAt ? e.backAt : moment()).diff(
+          moment(e.satrtAt),
+          'days'
+        ),
+        price: e.price,
+      };
+    });
+
+    return f.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.days * currentValue.price,
+      0
+    );
+  }
+
   ngOnInit() {
+    this.loadCars();
+    this.dateDebut.valueChanges.subscribe((res) => {
+      this.loadCars();
+    });
+
+    this.dateDebut.valueChanges.subscribe((res) => {
+      this.loadCars();
+    });
+
     this.reservationService.getStatistique().subscribe((res) => {
       this.data = res;
     });

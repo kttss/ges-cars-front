@@ -64,4 +64,12 @@ export class ReservationService {
   getcontratdata(id: number) {
     return this.network.get('contrat/pdf/' + id);
   }
+
+  getCarsWithcontrat(dateDebut: string, dateFin: string) {
+    return this.network.get(
+      `car?${dateDebut ? 'dateDebut=' + dateDebut : ''}${
+        dateFin ? '&dateFin=' + dateFin : ''
+      }`
+    );
+  }
 }

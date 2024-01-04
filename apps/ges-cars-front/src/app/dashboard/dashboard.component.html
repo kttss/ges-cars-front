@@ -428,6 +428,50 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Les voitures et leurs revenus </h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ges-cars-datepicker-field label="Date Debut" [control]="dateDebut"
+                                    className="col-md-6">
+                                </ges-cars-datepicker-field>
+                            </div>
+                            <div class="col-md-6">
+                                <ges-cars-datepicker-field label="Date Fin" [control]="dateFin" className="col-md-6">
+                                </ges-cars-datepicker-field>
+                            </div>
+                        </div>
+
+
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>ID</th>
+                                <th>Marque</th>
+                                <th>Model</th>
+                                <th>Matricule</th>
+                                <th>Carburant</th>
+                                <th>Revenus</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of cars">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.marque}}</td>
+                                    <td>{{item.model}}</td>
+                                    <td>{{item.matricule}}</td>
+                                    <td>{{item.carburant}}</td>
+                                    <td>{{calculRevunu(item.contrats) | number:'1.0-0'}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-12 col-md-12">
                 <div class="card">
                     <div class="card-header card-header-warning">
