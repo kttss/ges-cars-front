@@ -107,8 +107,8 @@ export class ClientListComponent implements OnInit {
         this.data.rows = res.rows.map((item: any) => {
           return {
             ...item,
-            datePermis: moment(item.datePermis).format('DD/MM/yyyy'),
-            birthday: moment(item.birthday).format('DD/MM/yyyy'),
+            datePermis: moment(item.datePermis).format('DD/MM/YYYY'),
+            birthday: moment(item.birthday).format('DD/MM/YYYY'),
           };
         });
       });

@@ -9,11 +9,11 @@ export class SortByPipe implements PipeTransform {
       return value.sort((a, b) =>
         moment(
           order.order === 'ASC' ? a[order.column] : b[order.column],
-          'DD/MM/yyyy'
+          'DD/MM/YYY'
         ).diff(
           moment(
             order.order === 'ASC' ? b[order.column] : a[order.column],
-            'DD/MM/yyyy'
+            'DD/MM/YYY'
           ),
           'days'
         )

@@ -75,10 +75,10 @@ export class ReservationListComponent implements OnInit {
         this.data.rows = res.rows.map((item: any) => {
           return {
             ...item,
-            satrtAt: moment(item.satrtAt).format('DD/MM/yyyy hh:mm'),
-            endAt: moment(item.endAt).format('DD/MM/yyyy hh:mm'),
-            creatAt: moment(item.creatAt).format('DD/MM/yyyy'),
-            backAt: moment(item.backAt).format('DD/MM/yyyy'),
+            satrtAt: moment(item.satrtAt).format('DD/MM/YYYY hh:mm'),
+            endAt: moment(item.endAt).format('DD/MM/YYYY hh:mm'),
+            creatAt: moment(item.creatAt).format('DD/MM/YYYY'),
+            backAt: moment(item.backAt).format('DD/MM/YYYY'),
             client: item.client.lastname + ' ' + item.client.firstname,
             car:
               item && item.car
