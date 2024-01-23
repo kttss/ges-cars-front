@@ -24,4 +24,8 @@ export class UserService {
   getById(id: number) {
     return this.network.get('user/' + id);
   }
+
+  delete(id: number) {
+    return this.network.delete('user/' + id);
+  }
 }

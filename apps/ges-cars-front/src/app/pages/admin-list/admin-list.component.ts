@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
 import { IDataSource } from '../../shared/models/table.model';
+import { CurrentRole } from '../../shared/utils/user';
+import { RoleEnum } from '../../shared/enums/role.enum';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'ges-cars-admin-list',
@@ -13,7 +16,7 @@ export class AdminListComponent implements OnInit {
   data: IDataSource = {
     mode: {
       edit: true,
-      delete: true,
+      delete: CurrentRole() === RoleEnum.Admin,
       detail: true,
     },
     columns: [
@@ -26,7 +29,7 @@ export class AdminListComponent implements OnInit {
     ],
     rows: [],
   };
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private alert: AlertService ) {}
 
   ngOnInit(): void {
     this.userService.getAll().subscribe((data: any) => {
@@ -40,5 +43,16 @@ export class AdminListComponent implements OnInit {
 
   openEdit(admin: any) {
     this.router.navigate(['/admin/edit/' + admin.id]);
+  }
+
+  ondelete(agence: any) {
+    this.alert.handleDelete().then((result) => {
+      if (result.value) {
+        this.userService.delete(agence.id).subscribe((res: any) => {
+          this.alert.handleSucces();
+          this.ngOnInit();
+        });
+      }
+    });
   }
 }
