@@ -436,14 +436,18 @@
                     </div>
                     <div class="card-body table-responsive">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <ges-cars-datepicker-field label="Date Debut" [control]="dateDebut"
-                                    className="col-md-6">
+                                    className="col-md-5">
                                 </ges-cars-datepicker-field>
                             </div>
-                            <div class="col-md-6">
-                                <ges-cars-datepicker-field label="Date Fin" [control]="dateFin" className="col-md-6">
+                            <div class="col-md-5">
+                                <ges-cars-datepicker-field label="Date Fin" [control]="dateFin" className="col-md-5">
                                 </ges-cars-datepicker-field>
+                            </div>
+
+                            <div class="col-md-2">
+                                <button class="btn btn-primary" (click)="clear()">clear</button>
                             </div>
                         </div>
 
@@ -458,13 +462,13 @@
                                 <th>Revenus</th>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of cars">
+                                <tr *ngFor="let item of carsTemp">
                                     <td>{{item.id}}</td>
                                     <td>{{item.marque}}</td>
                                     <td>{{item.model}}</td>
                                     <td>{{item.matricule}}</td>
                                     <td>{{item.carburant}}</td>
-                                    <td>{{calculRevunu(item.contrats) | number:'1.0-0'}}</td>
+                                    <td>{{calculRevunu(item.contrats)}}</td>
                                 </tr>
 
                             </tbody>

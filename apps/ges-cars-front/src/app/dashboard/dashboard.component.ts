@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   dateDebut = new FormControl();
   dateFin = new FormControl();
   cars: any[] = [];
+  carsTemp: any[] = [];
   constructor(private reservationService: ReservationService) {}
   startAnimationForLineChart(chart: any) {
     let seq: any, delays: any, durations: any;
@@ -78,22 +79,23 @@ export class DashboardComponent implements OnInit {
 
   loadCars() {
     this.reservationService
-      .getCarsWithcontrat(
-        this.dateDebut.value
-          ? moment(this.dateDebut.value).format('yyyy-MM-DD')
-          : '',
-        this.dateFin.value
-          ? moment(this.dateFin.value).format('yyyy-MM-DD')
-          : ''
+      .getCarsWithcontrat('', ''
       )
       .subscribe((res: any) => {
         this.cars = res;
+        this.carsTemp = res;
       });
   }
-  calculRevunu(contrat: any): number {
+
+  clear(){
+    this.dateDebut.reset();
+    this.dateFin.reset();
+  }
+
+  calculRevunu(contrat: any): string {
     const f: any[] = contrat.map((e: any) => {
       return {
-        days: moment(e.backAt ? e.backAt : moment()).diff(
+        days: moment(e.backAt ? e.backAt : e.endAt ? e.endAt : moment()).diff(
           moment(e.satrtAt),
           'days'
         ),
@@ -101,21 +103,56 @@ export class DashboardComponent implements OnInit {
       };
     });
 
-    return f.reduce(
+    return new Intl.NumberFormat('fr-FR').format( f.reduce(
       (accumulator, currentValue) =>
         accumulator + currentValue.days * currentValue.price,
       0
-    );
+    ))+' DH';
   }
 
   ngOnInit() {
     this.loadCars();
     this.dateDebut.valueChanges.subscribe((res) => {
-      this.loadCars();
+      const startAt = this.dateDebut.value ? moment(this.dateDebut.value) : null;
+      const endAt = this.dateFin.value ? moment(this.dateFin.value) : null;
+      if(startAt && endAt){
+        this.carsTemp = this.cars.map(r=> {
+          return {
+            ...r,
+            contrats: r.contrats.filter((e:any)=>moment(e.endAt).diff(endAt,'days')<=0 && moment(e.satrtAt).diff(startAt,'days')>0)
+          }
+        });
+      }else if(startAt){
+        this.carsTemp = this.cars.map(r=> {
+          return {
+            ...r,
+            contrats:r.contrats.filter((e:any)=>moment(e.satrtAt).diff(startAt,'days')>0)
+          }
+        });
+      }
     });
 
-    this.dateDebut.valueChanges.subscribe((res) => {
-      this.loadCars();
+    this.dateFin.valueChanges.subscribe((res) => {
+      this.carsTemp = this.cars;
+      const startAt = this.dateDebut.value ? moment(this.dateDebut.value) : null;
+      const endAt = this.dateFin.value ? moment(this.dateFin.value) : null;
+      
+      if(startAt && endAt){
+        this.carsTemp = this.cars.map((r,i)=> {
+          return {
+            ...r,
+            contrats: r.contrats.filter((e:any)=>moment(e.endAt).diff(endAt,'days')<=0 && moment(e.satrtAt).diff(startAt,'days')>0)
+          }
+        });
+      } else if(endAt){
+        this.carsTemp = this.cars.map(r=> {
+          return {
+            ...r,
+            contrats: r.contrats.filter((e:any)=>moment(e.endAt).diff(endAt,'days')<=0)
+          }
+        });
+      }
+      
     });
 
     this.reservationService.getStatistique().subscribe((res) => {
