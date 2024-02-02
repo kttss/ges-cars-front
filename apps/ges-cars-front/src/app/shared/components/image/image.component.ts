@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { window } from 'rxjs';
 
 import { FileService } from '../../../services/file.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'ges-cars-image',
@@ -37,6 +38,9 @@ export class ImageComponent {
     this.remove.emit();
   }
 
+  getFile(file: any) {
+    return file.replace(environment.apiUrlOld, environment.apiUrl);
+  }
   onView(pdf: any) {
     if (this.file) {
       if (this.file.includes('.pdf')) {
@@ -44,7 +48,7 @@ export class ImageComponent {
         pdf.click();
         // document.open(this.file, '_blank');
       } else {
-        this.fileService.showImage.next(this.file);
+        this.fileService.showImage.next(this.getFile(this.file));
       }
     }
   }
