@@ -17,11 +17,14 @@ export class SelectFieldComponent implements OnInit {
   @Input() set options(value: any) {
     this.optionsData = value;
     this.filtredData = value;
-    if (this.control.value) {
+     
+    if (this.control && this.control.value) {
       const op = this.optionsData.find(
         (item) => item.value === this.control.value
       );
-      this.controlSearch.setValue(op.viewValue, { emitEvent: false });
+      if(op){
+        this.controlSearch.setValue(op.viewValue, { emitEvent: false });
+      }
     }
   }
   controlSearch = new FormControl();
